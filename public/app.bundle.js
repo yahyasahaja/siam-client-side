@@ -44258,7 +44258,7 @@ var Dashboard = function (_Component) {
           _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard/home', component: _Home2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard/schedule', component: _Schedule2.default })
         ),
-        _react2.default.createElement(_LeftMenu2.default, null),
+        _react2.default.createElement(_LeftMenu2.default, this.props),
         _react2.default.createElement(_TopMenu2.default, null)
       );
     }
@@ -45359,6 +45359,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(118);
 
+var _lodash = __webpack_require__(186);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
 var _leftMenu = __webpack_require__(371);
 
 var _leftMenu2 = _interopRequireDefault(_leftMenu);
@@ -45377,40 +45381,69 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 //COMPONENTS
 
+//INNER_CONFIG
+var menuData = [{ icon: 'home', link: '/dashboard/home' }, { icon: 'date_range', link: '/dashboard/schedule' }];
+
 //COMPONENT
+
 var LeftMenu = function (_Component) {
   _inherits(LeftMenu, _Component);
 
   function LeftMenu() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, LeftMenu);
 
-    return _possibleConstructorReturn(this, (LeftMenu.__proto__ || Object.getPrototypeOf(LeftMenu)).apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LeftMenu.__proto__ || Object.getPrototypeOf(LeftMenu)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      selected: 0
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(LeftMenu, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var path = this.props.history.location.pathname;
+
+      if (path.indexOf('home') != -1) this.setState({ selected: 0 });else if (path.indexOf('schedule') != -1) this.setState({ selected: 1 });
+    }
+  }, {
+    key: 'renderMenuItem',
+    value: function renderMenuItem() {
+      var _this2 = this;
+
+      var selected = this.state.selected;
+
+      return _lodash2.default.map(menuData, function (data, i) {
+        return _react2.default.createElement(
+          _reactRouterDom.Link,
+          {
+            className: _leftMenu2.default.item + ' ' + (selected == i ? _leftMenu2.default.active : ''),
+            to: data.link, key: i,
+            onClick: function onClick() {
+              return _this2.setState({ selected: i });
+            }
+          },
+          _react2.default.createElement(
+            'span',
+            { className: 'material-icons' },
+            data.icon
+          )
+        );
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
         { className: _leftMenu2.default.container },
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { className: _leftMenu2.default.item, to: '/dashboard/home' },
-          _react2.default.createElement(
-            'span',
-            { className: 'material-icons' },
-            'home'
-          )
-        ),
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { className: _leftMenu2.default.item, to: '/dashboard/schedule' },
-          _react2.default.createElement(
-            'span',
-            { className: 'material-icons' },
-            'date_range'
-          )
-        )
+        this.renderMenuItem()
       );
     }
   }]);

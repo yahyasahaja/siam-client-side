@@ -21,7 +21,7 @@ export default class Dashboard extends Component {
           <Route path="/dashboard/home" component={Home} />
           <Route path="/dashboard/schedule" component={Schedule} />
         </Switch>
-        <LeftMenu />
+        <LeftMenu {...this.props} />
         <TopMenu />
       </div>
     )
