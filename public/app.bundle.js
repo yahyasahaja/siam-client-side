@@ -44111,7 +44111,11 @@ var Home = function (_Component) {
   _createClass(Home, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('div', { className: _home2.default.container });
+      return _react2.default.createElement(
+        'div',
+        { className: _home2.default.container },
+        'Homegwehreheroihjerohijeriohjeorihjoi'
+      );
     }
   }]);
 
@@ -44208,9 +44212,13 @@ var _Schedule = __webpack_require__(330);
 
 var _Schedule2 = _interopRequireDefault(_Schedule);
 
-var _Menu = __webpack_require__(362);
+var _LeftMenu = __webpack_require__(369);
 
-var _Menu2 = _interopRequireDefault(_Menu);
+var _LeftMenu2 = _interopRequireDefault(_LeftMenu);
+
+var _TopMenu = __webpack_require__(372);
+
+var _TopMenu2 = _interopRequireDefault(_TopMenu);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44243,14 +44251,15 @@ var Dashboard = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: _index2.default.container },
-        _react2.default.createElement(_Menu2.default, null),
         _react2.default.createElement(
           _reactRouterDom.Switch,
           null,
           _react2.default.createElement(_reactRouterDom.Redirect, { from: '/dashboard', exact: true, to: '/dashboard/home' }),
           _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard/home', component: _Home2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard/schedule', component: _Schedule2.default })
-        )
+        ),
+        _react2.default.createElement(_LeftMenu2.default, null),
+        _react2.default.createElement(_TopMenu2.default, null)
       );
     }
   }]);
@@ -44884,7 +44893,7 @@ exports = module.exports = __webpack_require__(12)();
 
 
 // module
-exports.push([module.i, ".index--container--3mQ07xhK {\n  width: 100%; }\n", "", {"version":3,"sources":["/./src/app/screens/Dashboard/css/index.scss"],"names":[],"mappings":"AAAA;EACE,YAAY,EAAE","file":"index.scss","sourcesContent":[".container {\n  width: 100%; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".index--container--3mQ07xhK {\n  width: 100%;\n  padding: 70px 0 0 112px;\n  background: #ededed; }\n", "", {"version":3,"sources":["/./src/app/screens/Dashboard/css/index.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,wBAAwB;EACxB,oBAAoB,EAAE","file":"index.scss","sourcesContent":[".container {\n  width: 100%;\n  padding: 70px 0 0 112px;\n  background: #ededed; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
@@ -45284,10 +45293,12 @@ exports = module.exports = __webpack_require__(12)();
 
 
 // module
-exports.push([module.i, "", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"home.scss","sourceRoot":"webpack://"}]);
+exports.push([module.i, ".home--container--20TSH_Ga {\n  display: block;\n  padding: 20px;\n  font-size: 12pt; }\n", "", {"version":3,"sources":["/./src/app/screens/Dashboard/css/home.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,cAAc;EACd,gBAAgB,EAAE","file":"home.scss","sourcesContent":[".container {\n  display: block;\n  padding: 20px;\n  font-size: 12pt; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
-
+exports.locals = {
+	"container": "home--container--20TSH_Ga"
+};
 
 /***/ }),
 /* 359 */
@@ -45321,7 +45332,16 @@ if(false) {
 }
 
 /***/ }),
-/* 360 */
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */,
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45337,7 +45357,136 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _floatingMenu = __webpack_require__(366);
+var _reactRouterDom = __webpack_require__(118);
+
+var _leftMenu = __webpack_require__(371);
+
+var _leftMenu2 = _interopRequireDefault(_leftMenu);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
+
+
+//STYLE
+
+
+//COMPONENTS
+
+//COMPONENT
+var LeftMenu = function (_Component) {
+  _inherits(LeftMenu, _Component);
+
+  function LeftMenu() {
+    _classCallCheck(this, LeftMenu);
+
+    return _possibleConstructorReturn(this, (LeftMenu.__proto__ || Object.getPrototypeOf(LeftMenu)).apply(this, arguments));
+  }
+
+  _createClass(LeftMenu, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: _leftMenu2.default.container },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { className: _leftMenu2.default.item, to: '/dashboard/home' },
+          _react2.default.createElement(
+            'span',
+            { className: 'material-icons' },
+            'home'
+          )
+        ),
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { className: _leftMenu2.default.item, to: '/dashboard/schedule' },
+          _react2.default.createElement(
+            'span',
+            { className: 'material-icons' },
+            'date_range'
+          )
+        )
+      );
+    }
+  }]);
+
+  return LeftMenu;
+}(_react.Component);
+
+exports.default = LeftMenu;
+
+/***/ }),
+/* 370 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(12)();
+// imports
+
+
+// module
+exports.push([module.i, ".left-menu--container--1af2dh-j {\n  width: 100px;\n  background: #1e6d9e;\n  top: 0;\n  left: 0;\n  height: 100%;\n  position: fixed;\n  padding-top: 62px; }\n  .left-menu--container--1af2dh-j .left-menu--item--2vRbp9Fu {\n    width: 100%;\n    height: 87px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    cursor: pointer;\n    color: white; }\n    .left-menu--container--1af2dh-j .left-menu--item--2vRbp9Fu:hover {\n      background: #17577c; }\n    .left-menu--container--1af2dh-j .left-menu--item--2vRbp9Fu:active {\n      background: #10415c; }\n  .left-menu--container--1af2dh-j .left-menu--active--1gXh6j0q {\n    background: #10415c; }\n", "", {"version":3,"sources":["/./src/app/components/css/left-menu.scss"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,oBAAoB;EACpB,OAAO;EACP,QAAQ;EACR,aAAa;EACb,gBAAgB;EAChB,kBAAkB,EAAE;EACpB;IACE,YAAY;IACZ,aAAa;IACb,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,yBAAyB;QACrB,sBAAsB;YAClB,wBAAwB;IAChC,0BAA0B;QACtB,uBAAuB;YACnB,oBAAoB;IAC5B,gBAAgB;IAChB,aAAa,EAAE;IACf;MACE,oBAAoB,EAAE;IACxB;MACE,oBAAoB,EAAE;EAC1B;IACE,oBAAoB,EAAE","file":"left-menu.scss","sourcesContent":[".container {\n  width: 100px;\n  background: #1e6d9e;\n  top: 0;\n  left: 0;\n  height: 100%;\n  position: fixed;\n  padding-top: 62px; }\n  .container .item {\n    width: 100%;\n    height: 87px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    cursor: pointer;\n    color: white; }\n    .container .item:hover {\n      background: #17577c; }\n    .container .item:active {\n      background: #10415c; }\n  .container .active {\n    background: #10415c; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "left-menu--container--1af2dh-j",
+	"item": "left-menu--item--2vRbp9Fu",
+	"active": "left-menu--active--1gXh6j0q"
+};
+
+/***/ }),
+/* 371 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(370);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(14)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js??ref--1-1!../../../../node_modules/postcss-loader/lib/index.js!../../../../node_modules/sass-loader/lib/loader.js!./left-menu.scss", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js??ref--1-1!../../../../node_modules/postcss-loader/lib/index.js!../../../../node_modules/sass-loader/lib/loader.js!./left-menu.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 372 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _floatingMenu = __webpack_require__(374);
 
 var _floatingMenu2 = _interopRequireDefault(_floatingMenu);
 
@@ -45356,170 +45505,78 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 //COMPONENTS
 
 //COMPONENT
-var FloatingMenu = function (_Component) {
-  _inherits(FloatingMenu, _Component);
+var TopMenu = function (_Component) {
+  _inherits(TopMenu, _Component);
 
-  function FloatingMenu() {
-    _classCallCheck(this, FloatingMenu);
-
-    return _possibleConstructorReturn(this, (FloatingMenu.__proto__ || Object.getPrototypeOf(FloatingMenu)).apply(this, arguments));
-  }
-
-  _createClass(FloatingMenu, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement('div', { className: _floatingMenu2.default.container });
-    }
-  }]);
-
-  return FloatingMenu;
-}(_react.Component);
-
-exports.default = FloatingMenu;
-
-/***/ }),
-/* 361 */,
-/* 362 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(118);
-
-var _index = __webpack_require__(364);
-
-var _index2 = _interopRequireDefault(_index);
-
-var _FloatingMenu = __webpack_require__(360);
-
-var _FloatingMenu2 = _interopRequireDefault(_FloatingMenu);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
-
-
-//STYLE
-
-
-//COMPONENTS
-
-
-//COMPONENT
-var Menu = function (_Component) {
-  _inherits(Menu, _Component);
-
-  function Menu() {
+  function TopMenu() {
     var _ref;
 
     var _temp, _this, _ret;
 
-    _classCallCheck(this, Menu);
+    _classCallCheck(this, TopMenu);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Menu.__proto__ || Object.getPrototypeOf(Menu)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = TopMenu.__proto__ || Object.getPrototypeOf(TopMenu)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       openMenu: false
     }, _this.toggleOpenMenu = function () {
       _this.setState({ openMenu: !_this.state.openMenu });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
-  _createClass(Menu, [{
+  _createClass(TopMenu, [{
     key: 'renderFloatingMenu',
     value: function renderFloatingMenu() {
-      if (this.state.openMenu) return _react2.default.createElement(_FloatingMenu2.default, null);
+      if (this.state.openMenu) return;
     }
   }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: _index2.default.container },
+        { className: _floatingMenu2.default.container },
         _react2.default.createElement(
           'div',
-          { className: _index2.default['left-menu'] },
+          { className: _floatingMenu2.default.left },
+          _react2.default.createElement('img', { src: '/img/logo-ub.png', alt: 'LOGO UB' }),
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { className: _index2.default.item, to: '/dashboard/home' },
-            _react2.default.createElement(
-              'span',
-              { className: 'material-icons' },
-              'home'
-            )
-          ),
-          _react2.default.createElement(
-            _reactRouterDom.Link,
-            { className: _index2.default.item, to: '/dashboard/schedule' },
-            _react2.default.createElement(
-              'span',
-              { className: 'material-icons' },
-              'date_range'
-            )
+            'h1',
+            null,
+            'SIAM'
           )
         ),
         _react2.default.createElement(
           'div',
-          { className: _index2.default.header },
+          { className: _floatingMenu2.default.right, onClick: this.toggleOpenMenu },
           _react2.default.createElement(
-            'div',
-            { className: _index2.default.left },
-            _react2.default.createElement('img', { src: '/img/logo-ub.png', alt: 'LOGO UB' }),
-            _react2.default.createElement(
-              'h1',
-              null,
-              'SIAM'
-            )
+            'span',
+            { className: 'material-icons' },
+            'account_circle'
           ),
           _react2.default.createElement(
-            'div',
-            { className: _index2.default.right, onClick: this.toggleOpenMenu },
-            _react2.default.createElement(
-              'span',
-              { className: 'material-icons' },
-              'account_circle'
-            ),
-            _react2.default.createElement(
-              'span',
-              { className: _index2.default.name },
-              'Yahya Sahaja'
-            ),
-            _react2.default.createElement(
-              'span',
-              { className: 'material-icons' },
-              'keyboard_arrow_down'
-            )
+            'span',
+            { className: _floatingMenu2.default.name },
+            'Yahya Sahaja'
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'material-icons' },
+            'keyboard_arrow_down'
           )
-        ),
-        this.renderFloatingMenu()
+        )
       );
     }
   }]);
 
-  return Menu;
+  return TopMenu;
 }(_react.Component);
 
-exports.default = Menu;
+exports.default = TopMenu;
 
 /***/ }),
-/* 363 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)();
@@ -45527,29 +45584,25 @@ exports = module.exports = __webpack_require__(12)();
 
 
 // module
-exports.push([module.i, ".index--container--2eKq6Y0q {\n  width: 100%;\n  display: block;\n  color: white;\n  min-height: 100%; }\n  .index--container--2eKq6Y0q .index--header--2vnQGg9V {\n    padding: 0 20px;\n    width: 100%;\n    min-height: 62px;\n    background: #2980b9;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-shadow: 0px 3px 7px 0 rgba(90, 90, 90, .45);\n            box-shadow: 0px 3px 7px 0 rgba(90, 90, 90, .45);\n    position: fixed;\n    top: 0;\n    left: 0; }\n    .index--container--2eKq6Y0q .index--header--2vnQGg9V .index--left--1Of7w8eM {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center; }\n      .index--container--2eKq6Y0q .index--header--2vnQGg9V .index--left--1Of7w8eM img {\n        width: 44px;\n        height: 45px; }\n      .index--container--2eKq6Y0q .index--header--2vnQGg9V .index--left--1Of7w8eM h1 {\n        margin-top: 20px;\n        line-height: 0;\n        font-weight: bold;\n        font-size: 24px;\n        margin-left: 20px; }\n    .index--container--2eKq6Y0q .index--header--2vnQGg9V .index--right--xK_L6Mjm {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      cursor: pointer;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      opacity: 1; }\n      .index--container--2eKq6Y0q .index--header--2vnQGg9V .index--right--xK_L6Mjm:hover {\n        opacity: .7; }\n      .index--container--2eKq6Y0q .index--header--2vnQGg9V .index--right--xK_L6Mjm .index--material-icons--mWUDpgmS {\n        font-size: 20pt; }\n      .index--container--2eKq6Y0q .index--header--2vnQGg9V .index--right--xK_L6Mjm .index--name--8hmhiF2D {\n        font-size: 12pt;\n        margin: 0px 10px; }\n  .index--container--2eKq6Y0q .index--left-menu--31zBlmh3 {\n    width: 100px;\n    background: #1e6d9e;\n    top: 0;\n    left: 0;\n    height: 100%;\n    position: fixed;\n    padding-top: 62px; }\n    .index--container--2eKq6Y0q .index--left-menu--31zBlmh3 .index--item--3zkkB_PS {\n      width: 100%;\n      height: 87px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      cursor: pointer;\n      color: white; }\n      .index--container--2eKq6Y0q .index--left-menu--31zBlmh3 .index--item--3zkkB_PS:hover {\n        background: #17577c; }\n      .index--container--2eKq6Y0q .index--left-menu--31zBlmh3 .index--item--3zkkB_PS:active {\n        background: #10415c; }\n    .index--container--2eKq6Y0q .index--left-menu--31zBlmh3 .index--active--1Ybvt2tJ {\n      background: #10415c; }\n", "", {"version":3,"sources":["/./src/app/components/Menu/css/index.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,eAAe;EACf,aAAa;EACb,iBAAiB,EAAE;EACnB;IACE,gBAAgB;IAChB,YAAY;IACZ,iBAAiB;IACjB,oBAAoB;IACpB,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,0BAA0B;QACtB,uBAAuB;YACnB,+BAA+B;IACvC,wDAAwD;YAChD,gDAAgD;IACxD,gBAAgB;IAChB,OAAO;IACP,QAAQ,EAAE;IACV;MACE,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,yBAAyB;UACrB,sBAAsB;cAClB,wBAAwB;MAChC,0BAA0B;UACtB,uBAAuB;cACnB,oBAAoB,EAAE;MAC9B;QACE,YAAY;QACZ,aAAa,EAAE;MACjB;QACE,iBAAiB;QACjB,eAAe;QACf,kBAAkB;QAClB,gBAAgB;QAChB,kBAAkB,EAAE;IACxB;MACE,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,gBAAgB;MAChB,0BAA0B;UACtB,uBAAuB;cACnB,oBAAoB;MAC5B,WAAW,EAAE;MACb;QACE,YAAY,EAAE;MAChB;QACE,gBAAgB,EAAE;MACpB;QACE,gBAAgB;QAChB,iBAAiB,EAAE;EACzB;IACE,aAAa;IACb,oBAAoB;IACpB,OAAO;IACP,QAAQ;IACR,aAAa;IACb,gBAAgB;IAChB,kBAAkB,EAAE;IACpB;MACE,YAAY;MACZ,aAAa;MACb,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,yBAAyB;UACrB,sBAAsB;cAClB,wBAAwB;MAChC,0BAA0B;UACtB,uBAAuB;cACnB,oBAAoB;MAC5B,gBAAgB;MAChB,aAAa,EAAE;MACf;QACE,oBAAoB,EAAE;MACxB;QACE,oBAAoB,EAAE;IAC1B;MACE,oBAAoB,EAAE","file":"index.scss","sourcesContent":[".container {\n  width: 100%;\n  display: block;\n  color: white;\n  min-height: 100%; }\n  .container .header {\n    padding: 0 20px;\n    width: 100%;\n    min-height: 62px;\n    background: #2980b9;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-shadow: 0px 3px 7px 0 rgba(90, 90, 90, .45);\n            box-shadow: 0px 3px 7px 0 rgba(90, 90, 90, .45);\n    position: fixed;\n    top: 0;\n    left: 0; }\n    .container .header .left {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center; }\n      .container .header .left img {\n        width: 44px;\n        height: 45px; }\n      .container .header .left h1 {\n        margin-top: 20px;\n        line-height: 0;\n        font-weight: bold;\n        font-size: 24px;\n        margin-left: 20px; }\n    .container .header .right {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      cursor: pointer;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      opacity: 1; }\n      .container .header .right:hover {\n        opacity: .7; }\n      .container .header .right .material-icons {\n        font-size: 20pt; }\n      .container .header .right .name {\n        font-size: 12pt;\n        margin: 0px 10px; }\n  .container .left-menu {\n    width: 100px;\n    background: #1e6d9e;\n    top: 0;\n    left: 0;\n    height: 100%;\n    position: fixed;\n    padding-top: 62px; }\n    .container .left-menu .item {\n      width: 100%;\n      height: 87px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      cursor: pointer;\n      color: white; }\n      .container .left-menu .item:hover {\n        background: #17577c; }\n      .container .left-menu .item:active {\n        background: #10415c; }\n    .container .left-menu .active {\n      background: #10415c; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".floating-menu--container--3T-ahLQ6 {\n  padding: 0 20px;\n  width: 100%;\n  min-height: 62px;\n  background: #2980b9;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-shadow: 0px 3px 7px 0 rgba(90, 90, 90, .45);\n          box-shadow: 0px 3px 7px 0 rgba(90, 90, 90, .45);\n  position: fixed;\n  top: 0;\n  left: 0;\n  color: white; }\n  .floating-menu--container--3T-ahLQ6 .floating-menu--left--3BC9meTC {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n    .floating-menu--container--3T-ahLQ6 .floating-menu--left--3BC9meTC img {\n      width: 44px;\n      height: 45px; }\n    .floating-menu--container--3T-ahLQ6 .floating-menu--left--3BC9meTC h1 {\n      margin-top: 20px;\n      line-height: 0;\n      font-weight: bold;\n      font-size: 24px;\n      margin-left: 20px; }\n  .floating-menu--container--3T-ahLQ6 .floating-menu--right--4zctBx6Y {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    cursor: pointer;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    opacity: 1; }\n    .floating-menu--container--3T-ahLQ6 .floating-menu--right--4zctBx6Y:hover {\n      opacity: .7; }\n    .floating-menu--container--3T-ahLQ6 .floating-menu--right--4zctBx6Y .floating-menu--material-icons--1Tta-YZV {\n      font-size: 20pt; }\n    .floating-menu--container--3T-ahLQ6 .floating-menu--right--4zctBx6Y .floating-menu--name--5u8_FXsx {\n      font-size: 12pt;\n      margin: 0px 10px; }\n", "", {"version":3,"sources":["/./src/app/components/css/floating-menu.scss"],"names":[],"mappings":"AAAA;EACE,gBAAgB;EAChB,YAAY;EACZ,iBAAiB;EACjB,oBAAoB;EACpB,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,0BAA0B;MACtB,uBAAuB;UACnB,+BAA+B;EACvC,wDAAwD;UAChD,gDAAgD;EACxD,gBAAgB;EAChB,OAAO;EACP,QAAQ;EACR,aAAa,EAAE;EACf;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,yBAAyB;QACrB,sBAAsB;YAClB,wBAAwB;IAChC,0BAA0B;QACtB,uBAAuB;YACnB,oBAAoB,EAAE;IAC9B;MACE,YAAY;MACZ,aAAa,EAAE;IACjB;MACE,iBAAiB;MACjB,eAAe;MACf,kBAAkB;MAClB,gBAAgB;MAChB,kBAAkB,EAAE;EACxB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,gBAAgB;IAChB,0BAA0B;QACtB,uBAAuB;YACnB,oBAAoB;IAC5B,WAAW,EAAE;IACb;MACE,YAAY,EAAE;IAChB;MACE,gBAAgB,EAAE;IACpB;MACE,gBAAgB;MAChB,iBAAiB,EAAE","file":"floating-menu.scss","sourcesContent":[".container {\n  padding: 0 20px;\n  width: 100%;\n  min-height: 62px;\n  background: #2980b9;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-shadow: 0px 3px 7px 0 rgba(90, 90, 90, .45);\n          box-shadow: 0px 3px 7px 0 rgba(90, 90, 90, .45);\n  position: fixed;\n  top: 0;\n  left: 0;\n  color: white; }\n  .container .left {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center; }\n    .container .left img {\n      width: 44px;\n      height: 45px; }\n    .container .left h1 {\n      margin-top: 20px;\n      line-height: 0;\n      font-weight: bold;\n      font-size: 24px;\n      margin-left: 20px; }\n  .container .right {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    cursor: pointer;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    opacity: 1; }\n    .container .right:hover {\n      opacity: .7; }\n    .container .right .material-icons {\n      font-size: 20pt; }\n    .container .right .name {\n      font-size: 12pt;\n      margin: 0px 10px; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
-	"container": "index--container--2eKq6Y0q",
-	"header": "index--header--2vnQGg9V",
-	"left": "index--left--1Of7w8eM",
-	"right": "index--right--xK_L6Mjm",
-	"material-icons": "index--material-icons--mWUDpgmS",
-	"name": "index--name--8hmhiF2D",
-	"left-menu": "index--left-menu--31zBlmh3",
-	"item": "index--item--3zkkB_PS",
-	"active": "index--active--1Ybvt2tJ"
+	"container": "floating-menu--container--3T-ahLQ6",
+	"left": "floating-menu--left--3BC9meTC",
+	"right": "floating-menu--right--4zctBx6Y",
+	"material-icons": "floating-menu--material-icons--1Tta-YZV",
+	"name": "floating-menu--name--5u8_FXsx"
 };
 
 /***/ }),
-/* 364 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(363);
+var content = __webpack_require__(373);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -45563,53 +45616,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../node_modules/postcss-loader/lib/index.js!../../../../../node_modules/sass-loader/lib/loader.js!./index.scss", function() {
-			var newContent = require("!!../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../node_modules/postcss-loader/lib/index.js!../../../../../node_modules/sass-loader/lib/loader.js!./index.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 365 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(12)();
-// imports
-
-
-// module
-exports.push([module.i, "", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"floating-menu.scss","sourceRoot":"webpack://"}]);
-
-// exports
-
-
-/***/ }),
-/* 366 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(365);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(14)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../node_modules/postcss-loader/lib/index.js!../../../../../node_modules/sass-loader/lib/loader.js!./floating-menu.scss", function() {
-			var newContent = require("!!../../../../../node_modules/css-loader/index.js??ref--1-1!../../../../../node_modules/postcss-loader/lib/index.js!../../../../../node_modules/sass-loader/lib/loader.js!./floating-menu.scss");
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js??ref--1-1!../../../../node_modules/postcss-loader/lib/index.js!../../../../node_modules/sass-loader/lib/loader.js!./floating-menu.scss", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js??ref--1-1!../../../../node_modules/postcss-loader/lib/index.js!../../../../node_modules/sass-loader/lib/loader.js!./floating-menu.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
