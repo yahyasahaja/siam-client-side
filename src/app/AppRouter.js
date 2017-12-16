@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 import Home from './screens/Home'
+import Dashboard from './screens/Dashboard'
 
 export default class AppRouter extends Component {
     componentWillMount() {
@@ -14,7 +15,8 @@ export default class AppRouter extends Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route path="/" component={Home} />
+                    <Route path="/" exact component={Home} />
+                    <Route path="/dashboard" component={Dashboard} />
                 </Switch>
             </BrowserRouter>
         );
