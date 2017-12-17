@@ -5,7 +5,7 @@ import Checkbox from 'react-toolbox/lib/checkbox'
 import {Button, IconButton} from 'react-toolbox/lib/button'
 
 //STYLE
-import style from './login.scss'
+import style from './css/login.scss'
 import theme from '../../css/common-button.scss'
 
 //COMPONENT
@@ -41,7 +41,7 @@ export default class Login extends Component {
               onChange={this.handleChange.bind(this, "username")} />
             <Input 
               name="password"
-              label="Username" type="text" type="password" value={this.state.password}
+              label="Password" type="text" type="password" value={this.state.password}
               onChange={this.handleChange.bind(this, "password")} />
 
             <Checkbox
