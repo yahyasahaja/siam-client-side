@@ -1,0 +1,73 @@
+[
+  [
+    {
+      "matkul": "Algoritma dan Struktur Data",
+      "ruang": "A2.17",
+      "waktu_mulai": "09:30",
+      "waktu_selesai": "12:59"
+    },
+    {
+      "matkul": "Sistem Basis Data",
+      "ruang": "A2.17",
+      "waktu_mulai": "09:30",
+      "waktu_selesai": "12:59"
+    }
+  ],
+  [
+    {
+      "matkul": "Sistem Operasi",
+      "ruang": "A2.25",
+      "waktu_mulai": "09:30",
+      "waktu_selesai": "12:59"
+    },
+    {
+      "matkul": "Sistem Basis Data",
+      "ruang": "E2.3",
+      "waktu_mulai": "09:30",
+      "waktu_selesai": "12:59"
+    }
+  ],
+  [
+    {
+      "matkul": "Sistem Operasi",
+      "ruang": "A2.17",
+      "waktu_mulai": "09:30",
+      "waktu_selesai": "12:59"
+    },
+    {
+      "matkul": "Sistem Basis Data",
+      "ruang": "A2.17",
+      "waktu_mulai": "09:30",
+      "waktu_selesai": "12:59"
+    }
+  ],
+  [
+    {
+      "matkul": "Sistem Operasi",
+      "ruang": "A2.17",
+      "waktu_mulai": "09:30",
+      "waktu_selesai": "12:59"
+    },
+    {
+      "matkul": "Sistem Basis Data",
+      "ruang": "A2.17",
+      "waktu_mulai": "09:30",
+      "waktu_selesai": "12:59"
+    }
+  ],
+  [
+    {
+      "matkul": "Sistem Operasi",
+      "ruang": "A2.17",
+      "waktu_mulai": "09:30",
+      "waktu_selesai": "12:59"
+    },
+    {
+      "matkul": "Sistem Basis Data",
+      "ruang": "A2.17",
+      "waktu_mulai": "09:30",
+      "waktu_selesai": "12:59"
+    }
+  ],
+  null
+]

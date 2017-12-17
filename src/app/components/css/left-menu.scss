@@ -15,6 +15,7 @@
     align-items: center;
     cursor: pointer;
     color: white;
+    flex-direction: column;
 
     &:hover {
       background: #17577c;
@@ -22,6 +23,10 @@
 
     &:active {
       background: #10415c;
+    }
+
+    .label {
+      margin-top: 10px;
     }
   }
 

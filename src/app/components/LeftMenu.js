@@ -10,8 +10,8 @@ import style from './css/left-menu.scss'
 
 //INNER_CONFIG
 const menuData = [
-  { icon: 'home', link: '/dashboard/home' },
-  { icon: 'date_range', link: '/dashboard/schedule' },
+  { icon: 'home', link: '/dashboard/home', label: 'Home' },
+  { icon: 'date_range', link: '/dashboard/schedule', label: 'Schedule' },
 ]
 
 //COMPONENT
@@ -37,6 +37,7 @@ export default class LeftMenu extends Component {
         onClick={() => this.setState({selected: i})}
       >
         <span className="material-icons">{data.icon}</span>
+        <span className={style.label}>{data.label}</span>
       </Link>
     )
   }

@@ -44105,7 +44105,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 //COMPONENTS
 
 //INNER_CONFIG
-var menuData = [{ icon: 'home', link: '/dashboard/home' }, { icon: 'date_range', link: '/dashboard/schedule' }];
+var menuData = [{ icon: 'home', link: '/dashboard/home', label: 'Home' }, { icon: 'date_range', link: '/dashboard/schedule', label: 'Schedule' }];
 
 //COMPONENT
 
@@ -44156,6 +44156,11 @@ var LeftMenu = function (_Component) {
             'span',
             { className: 'material-icons' },
             data.icon
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: _leftMenu2.default.label },
+            data.label
           )
         );
       });
@@ -44589,9 +44594,21 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _lodash = __webpack_require__(87);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _axios = __webpack_require__(44);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 var _schedule = __webpack_require__(362);
 
 var _schedule2 = _interopRequireDefault(_schedule);
+
+var _ClosableCard = __webpack_require__(372);
+
+var _ClosableCard2 = _interopRequireDefault(_ClosableCard);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44607,27 +44624,107 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 //COMPONENTS
 
+
+//INNER_CONFIG
+var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
 //COMPONENT
-var Home = function (_Component) {
-  _inherits(Home, _Component);
 
-  function Home() {
-    _classCallCheck(this, Home);
+var Shcedule = function (_Component) {
+  _inherits(Shcedule, _Component);
 
-    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+  function Shcedule() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Shcedule);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Shcedule.__proto__ || Object.getPrototypeOf(Shcedule)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      schedule: null
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
-  _createClass(Home, [{
+  _createClass(Shcedule, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      _axios2.default.get('/json/schedule.json').then(function (res, i) {
+        _this2.setState({
+          schedule: res.data
+        });
+      });
+    }
+  }, {
+    key: 'renderCards',
+    value: function renderCards() {
+      var _this3 = this;
+
+      var schedule = this.state.schedule;
+
+      console.log(schedule);
+      if (schedule) return _lodash2.default.map(schedule, function (data, i) {
+        if (!data || i > 5) return;
+        return _react2.default.createElement(
+          _ClosableCard2.default,
+          { title: days[i], key: i },
+          _this3.renderItem(data)
+        );
+      });
+    }
+  }, {
+    key: 'renderItem',
+    value: function renderItem(data) {
+      return _lodash2.default.map(data, function (res, i) {
+        return _react2.default.createElement(
+          'div',
+          { className: _schedule2.default.item },
+          _react2.default.createElement(
+            'div',
+            { className: _schedule2.default.left },
+            _react2.default.createElement(
+              'span',
+              null,
+              res.matkul
+            ),
+            _react2.default.createElement(
+              'span',
+              null,
+              res.ruang
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _schedule2.default.right },
+            _react2.default.createElement(
+              'span',
+              null,
+              res.waktu_mulai + ' - ' + res.waktu_selesai
+            )
+          )
+        );
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('div', { className: _schedule2.default.container });
+      return _react2.default.createElement(
+        'div',
+        { className: _schedule2.default.container },
+        this.renderCards()
+      );
     }
   }]);
 
-  return Home;
+  return Shcedule;
 }(_react.Component);
 
-exports.default = Home;
+exports.default = Shcedule;
 
 /***/ }),
 /* 333 */
@@ -45325,12 +45422,13 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, ".left-menu--container--1af2dh-j {\n  width: 100px;\n  background: #1e6d9e;\n  top: 0;\n  left: 0;\n  height: 100%;\n  position: fixed;\n  padding-top: 62px; }\n  .left-menu--container--1af2dh-j .left-menu--item--2vRbp9Fu {\n    width: 100%;\n    height: 87px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    cursor: pointer;\n    color: white; }\n    .left-menu--container--1af2dh-j .left-menu--item--2vRbp9Fu:hover {\n      background: #17577c; }\n    .left-menu--container--1af2dh-j .left-menu--item--2vRbp9Fu:active {\n      background: #10415c; }\n  .left-menu--container--1af2dh-j .left-menu--active--1gXh6j0q {\n    background: #10415c; }\n", "", {"version":3,"sources":["/./src/app/components/css/left-menu.scss"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,oBAAoB;EACpB,OAAO;EACP,QAAQ;EACR,aAAa;EACb,gBAAgB;EAChB,kBAAkB,EAAE;EACpB;IACE,YAAY;IACZ,aAAa;IACb,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,yBAAyB;QACrB,sBAAsB;YAClB,wBAAwB;IAChC,0BAA0B;QACtB,uBAAuB;YACnB,oBAAoB;IAC5B,gBAAgB;IAChB,aAAa,EAAE;IACf;MACE,oBAAoB,EAAE;IACxB;MACE,oBAAoB,EAAE;EAC1B;IACE,oBAAoB,EAAE","file":"left-menu.scss","sourcesContent":[".container {\n  width: 100px;\n  background: #1e6d9e;\n  top: 0;\n  left: 0;\n  height: 100%;\n  position: fixed;\n  padding-top: 62px; }\n  .container .item {\n    width: 100%;\n    height: 87px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    cursor: pointer;\n    color: white; }\n    .container .item:hover {\n      background: #17577c; }\n    .container .item:active {\n      background: #10415c; }\n  .container .active {\n    background: #10415c; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".left-menu--container--1af2dh-j {\n  width: 100px;\n  background: #1e6d9e;\n  top: 0;\n  left: 0;\n  height: 100%;\n  position: fixed;\n  padding-top: 62px; }\n  .left-menu--container--1af2dh-j .left-menu--item--2vRbp9Fu {\n    width: 100%;\n    height: 87px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    cursor: pointer;\n    color: white;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n    .left-menu--container--1af2dh-j .left-menu--item--2vRbp9Fu:hover {\n      background: #17577c; }\n    .left-menu--container--1af2dh-j .left-menu--item--2vRbp9Fu:active {\n      background: #10415c; }\n    .left-menu--container--1af2dh-j .left-menu--item--2vRbp9Fu .left-menu--label--1ltUefMH {\n      margin-top: 10px; }\n  .left-menu--container--1af2dh-j .left-menu--active--1gXh6j0q {\n    background: #10415c; }\n", "", {"version":3,"sources":["/./src/app/components/css/left-menu.scss"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,oBAAoB;EACpB,OAAO;EACP,QAAQ;EACR,aAAa;EACb,gBAAgB;EAChB,kBAAkB,EAAE;EACpB;IACE,YAAY;IACZ,aAAa;IACb,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,yBAAyB;QACrB,sBAAsB;YAClB,wBAAwB;IAChC,0BAA0B;QACtB,uBAAuB;YACnB,oBAAoB;IAC5B,gBAAgB;IAChB,aAAa;IACb,6BAA6B;IAC7B,8BAA8B;QAC1B,2BAA2B;YACvB,uBAAuB,EAAE;IACjC;MACE,oBAAoB,EAAE;IACxB;MACE,oBAAoB,EAAE;IACxB;MACE,iBAAiB,EAAE;EACvB;IACE,oBAAoB,EAAE","file":"left-menu.scss","sourcesContent":[".container {\n  width: 100px;\n  background: #1e6d9e;\n  top: 0;\n  left: 0;\n  height: 100%;\n  position: fixed;\n  padding-top: 62px; }\n  .container .item {\n    width: 100%;\n    height: 87px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    cursor: pointer;\n    color: white;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n    .container .item:hover {\n      background: #17577c; }\n    .container .item:active {\n      background: #10415c; }\n    .container .item .label {\n      margin-top: 10px; }\n  .container .active {\n    background: #10415c; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
 	"container": "left-menu--container--1af2dh-j",
 	"item": "left-menu--item--2vRbp9Fu",
+	"label": "left-menu--label--1ltUefMH",
 	"active": "left-menu--active--1gXh6j0q"
 };
 
@@ -45379,7 +45477,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, ".home--container--20TSH_Ga {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 20px;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n  .home--container--20TSH_Ga .home--card-title--2tzhMUCv {\n    font-size: 22px;\n    color: #2980b9;\n    margin-bottom: 30px; }\n  .home--container--20TSH_Ga .home--profile-header--3b1zB8VE, .home--container--20TSH_Ga .home--dosbim-header--AewS92aR {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin-bottom: 30px;\n    position: relative;\n    min-width: 360px; }\n    .home--container--20TSH_Ga .home--profile-header--3b1zB8VE .home--pic--1LrYcxNc, .home--container--20TSH_Ga .home--dosbim-header--AewS92aR .home--pic--1LrYcxNc {\n      border-radius: 100px;\n      border: solid #2980ba 3px;\n      margin-right: 20px; }\n      .home--container--20TSH_Ga .home--profile-header--3b1zB8VE .home--pic--1LrYcxNc .home--img--2pB3og6w, .home--container--20TSH_Ga .home--dosbim-header--AewS92aR .home--pic--1LrYcxNc .home--img--2pB3og6w {\n        font-size: 75pt;\n        display: block; }\n    .home--container--20TSH_Ga .home--profile-header--3b1zB8VE .home--wrapper--4_dLk0Qj, .home--container--20TSH_Ga .home--dosbim-header--AewS92aR .home--wrapper--4_dLk0Qj {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n      .home--container--20TSH_Ga .home--profile-header--3b1zB8VE .home--wrapper--4_dLk0Qj .home--nama--26vXzPfT, .home--container--20TSH_Ga .home--dosbim-header--AewS92aR .home--wrapper--4_dLk0Qj .home--nama--26vXzPfT {\n        font-size: 20px;\n        color: #596063; }\n      .home--container--20TSH_Ga .home--profile-header--3b1zB8VE .home--wrapper--4_dLk0Qj .home--nim--hPyCivou, .home--container--20TSH_Ga .home--dosbim-header--AewS92aR .home--wrapper--4_dLk0Qj .home--nim--hPyCivou {\n        font-size: 15px;\n        color: #bdc4c6; }\n    .home--container--20TSH_Ga .home--profile-header--3b1zB8VE .home--activation--oN2BY0kd, .home--container--20TSH_Ga .home--dosbim-header--AewS92aR .home--activation--oN2BY0kd {\n      display: block;\n      background: #2980ba;\n      padding: 3px 15px;\n      font-size: 12pt;\n      position: absolute;\n      color: white;\n      border-radius: 7px;\n      font-weight: 700;\n      right: 0px;\n      bottom: -20px; }\n", "", {"version":3,"sources":["/./src/app/screens/Dashboard/css/home.scss"],"names":[],"mappings":"AAAA;EACE,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,cAAc;EACd,oBAAoB;MAChB,gBAAgB;EACpB,yBAAyB;MACrB,sBAAsB;UAClB,wBAAwB,EAAE;EAClC;IACE,gBAAgB;IAChB,eAAe;IACf,oBAAoB,EAAE;EACxB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,oBAAoB;IACpB,mBAAmB;IACnB,iBAAiB,EAAE;IACnB;MACE,qBAAqB;MACrB,0BAA0B;MAC1B,mBAAmB,EAAE;MACrB;QACE,gBAAgB;QAChB,eAAe,EAAE;IACrB;MACE,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,yBAAyB;UACrB,sBAAsB;cAClB,wBAAwB;MAChC,6BAA6B;MAC7B,8BAA8B;UAC1B,2BAA2B;cACvB,uBAAuB,EAAE;MACjC;QACE,gBAAgB;QAChB,eAAe,EAAE;MACnB;QACE,gBAAgB;QAChB,eAAe,EAAE;IACrB;MACE,eAAe;MACf,oBAAoB;MACpB,kBAAkB;MAClB,gBAAgB;MAChB,mBAAmB;MACnB,aAAa;MACb,mBAAmB;MACnB,iBAAiB;MACjB,WAAW;MACX,cAAc,EAAE","file":"home.scss","sourcesContent":[".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 20px;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n  .container .card-title {\n    font-size: 22px;\n    color: #2980b9;\n    margin-bottom: 30px; }\n  .container .profile-header, .container .dosbim-header {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin-bottom: 30px;\n    position: relative;\n    min-width: 360px; }\n    .container .profile-header .pic, .container .dosbim-header .pic {\n      border-radius: 100px;\n      border: solid #2980ba 3px;\n      margin-right: 20px; }\n      .container .profile-header .pic .img, .container .dosbim-header .pic .img {\n        font-size: 75pt;\n        display: block; }\n    .container .profile-header .wrapper, .container .dosbim-header .wrapper {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n      .container .profile-header .wrapper .nama, .container .dosbim-header .wrapper .nama {\n        font-size: 20px;\n        color: #596063; }\n      .container .profile-header .wrapper .nim, .container .dosbim-header .wrapper .nim {\n        font-size: 15px;\n        color: #bdc4c6; }\n    .container .profile-header .activation, .container .dosbim-header .activation {\n      display: block;\n      background: #2980ba;\n      padding: 3px 15px;\n      font-size: 12pt;\n      position: absolute;\n      color: white;\n      border-radius: 7px;\n      font-weight: 700;\n      right: 0px;\n      bottom: -20px; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".home--container--20TSH_Ga {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 20px;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding: 90px 20px 20px 132px;\n  background: #ededed; }\n  .home--container--20TSH_Ga .home--card-title--2tzhMUCv {\n    font-size: 22px;\n    color: #2980b9;\n    margin-bottom: 30px; }\n  .home--container--20TSH_Ga .home--profile-header--3b1zB8VE, .home--container--20TSH_Ga .home--dosbim-header--AewS92aR {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin-bottom: 30px;\n    position: relative;\n    min-width: 360px; }\n    .home--container--20TSH_Ga .home--profile-header--3b1zB8VE .home--pic--1LrYcxNc, .home--container--20TSH_Ga .home--dosbim-header--AewS92aR .home--pic--1LrYcxNc {\n      border-radius: 100px;\n      border: solid #2980ba 3px;\n      margin-right: 20px; }\n      .home--container--20TSH_Ga .home--profile-header--3b1zB8VE .home--pic--1LrYcxNc .home--img--2pB3og6w, .home--container--20TSH_Ga .home--dosbim-header--AewS92aR .home--pic--1LrYcxNc .home--img--2pB3og6w {\n        font-size: 75pt;\n        display: block; }\n    .home--container--20TSH_Ga .home--profile-header--3b1zB8VE .home--wrapper--4_dLk0Qj, .home--container--20TSH_Ga .home--dosbim-header--AewS92aR .home--wrapper--4_dLk0Qj {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n      .home--container--20TSH_Ga .home--profile-header--3b1zB8VE .home--wrapper--4_dLk0Qj .home--nama--26vXzPfT, .home--container--20TSH_Ga .home--dosbim-header--AewS92aR .home--wrapper--4_dLk0Qj .home--nama--26vXzPfT {\n        font-size: 20px;\n        color: #596063; }\n      .home--container--20TSH_Ga .home--profile-header--3b1zB8VE .home--wrapper--4_dLk0Qj .home--nim--hPyCivou, .home--container--20TSH_Ga .home--dosbim-header--AewS92aR .home--wrapper--4_dLk0Qj .home--nim--hPyCivou {\n        font-size: 15px;\n        color: #bdc4c6; }\n    .home--container--20TSH_Ga .home--profile-header--3b1zB8VE .home--activation--oN2BY0kd, .home--container--20TSH_Ga .home--dosbim-header--AewS92aR .home--activation--oN2BY0kd {\n      display: block;\n      background: #2980ba;\n      padding: 3px 15px;\n      font-size: 12pt;\n      position: absolute;\n      color: white;\n      border-radius: 7px;\n      font-weight: 700;\n      right: 0px;\n      bottom: -20px; }\n", "", {"version":3,"sources":["/./src/app/screens/Dashboard/css/home.scss"],"names":[],"mappings":"AAAA;EACE,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,cAAc;EACd,oBAAoB;MAChB,gBAAgB;EACpB,yBAAyB;MACrB,sBAAsB;UAClB,wBAAwB;EAChC,8BAA8B;EAC9B,oBAAoB,EAAE;EACtB;IACE,gBAAgB;IAChB,eAAe;IACf,oBAAoB,EAAE;EACxB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,oBAAoB;IACpB,mBAAmB;IACnB,iBAAiB,EAAE;IACnB;MACE,qBAAqB;MACrB,0BAA0B;MAC1B,mBAAmB,EAAE;MACrB;QACE,gBAAgB;QAChB,eAAe,EAAE;IACrB;MACE,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,yBAAyB;UACrB,sBAAsB;cAClB,wBAAwB;MAChC,6BAA6B;MAC7B,8BAA8B;UAC1B,2BAA2B;cACvB,uBAAuB,EAAE;MACjC;QACE,gBAAgB;QAChB,eAAe,EAAE;MACnB;QACE,gBAAgB;QAChB,eAAe,EAAE;IACrB;MACE,eAAe;MACf,oBAAoB;MACpB,kBAAkB;MAClB,gBAAgB;MAChB,mBAAmB;MACnB,aAAa;MACb,mBAAmB;MACnB,iBAAiB;MACjB,WAAW;MACX,cAAc,EAAE","file":"home.scss","sourcesContent":[".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 20px;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding: 90px 20px 20px 132px;\n  background: #ededed; }\n  .container .card-title {\n    font-size: 22px;\n    color: #2980b9;\n    margin-bottom: 30px; }\n  .container .profile-header, .container .dosbim-header {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    margin-bottom: 30px;\n    position: relative;\n    min-width: 360px; }\n    .container .profile-header .pic, .container .dosbim-header .pic {\n      border-radius: 100px;\n      border: solid #2980ba 3px;\n      margin-right: 20px; }\n      .container .profile-header .pic .img, .container .dosbim-header .pic .img {\n        font-size: 75pt;\n        display: block; }\n    .container .profile-header .wrapper, .container .dosbim-header .wrapper {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n      .container .profile-header .wrapper .nama, .container .dosbim-header .wrapper .nama {\n        font-size: 20px;\n        color: #596063; }\n      .container .profile-header .wrapper .nim, .container .dosbim-header .wrapper .nim {\n        font-size: 15px;\n        color: #bdc4c6; }\n    .container .profile-header .activation, .container .dosbim-header .activation {\n      display: block;\n      background: #2980ba;\n      padding: 3px 15px;\n      font-size: 12pt;\n      position: absolute;\n      color: white;\n      border-radius: 7px;\n      font-weight: 700;\n      right: 0px;\n      bottom: -20px; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
@@ -45404,7 +45502,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, ".index--container--3mQ07xhK {\n  width: 100%;\n  padding: 70px 0 0 112px;\n  background: #ededed; }\n", "", {"version":3,"sources":["/./src/app/screens/Dashboard/css/index.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,wBAAwB;EACxB,oBAAoB,EAAE","file":"index.scss","sourcesContent":[".container {\n  width: 100%;\n  padding: 70px 0 0 112px;\n  background: #ededed; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".index--container--3mQ07xhK {\n  width: 100%;\n  background: #ededed; }\n", "", {"version":3,"sources":["/./src/app/screens/Dashboard/css/index.scss"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,oBAAoB,EAAE","file":"index.scss","sourcesContent":[".container {\n  width: 100%;\n  background: #ededed; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
@@ -45420,10 +45518,14 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, "", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"schedule.scss","sourceRoot":"webpack://"}]);
+exports.push([module.i, ".schedule--container--2MAZcRDJ {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 20px;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding: 90px 20px 20px 132px;\n  background: #ededed; }\n  .schedule--container--2MAZcRDJ .schedule--item--qUPsaci_ {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    font-weight: 500;\n    margin-bottom: 10px;\n    padding-bottom: 10px;\n    border-bottom: dashed #f1f1f1 1px; }\n    .schedule--container--2MAZcRDJ .schedule--item--qUPsaci_ .schedule--left--3Enw3mzz {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n", "", {"version":3,"sources":["/./src/app/screens/Dashboard/css/schedule.scss"],"names":[],"mappings":"AAAA;EACE,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,cAAc;EACd,oBAAoB;MAChB,gBAAgB;EACpB,yBAAyB;MACrB,sBAAsB;UAClB,wBAAwB;EAChC,8BAA8B;EAC9B,oBAAoB,EAAE;EACtB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,0BAA0B;QACtB,uBAAuB;YACnB,+BAA+B;IACvC,iBAAiB;IACjB,oBAAoB;IACpB,qBAAqB;IACrB,kCAAkC,EAAE;IACpC;MACE,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,6BAA6B;MAC7B,8BAA8B;UAC1B,2BAA2B;cACvB,uBAAuB,EAAE","file":"schedule.scss","sourcesContent":[".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 20px;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding: 90px 20px 20px 132px;\n  background: #ededed; }\n  .container .item {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    font-weight: 500;\n    margin-bottom: 10px;\n    padding-bottom: 10px;\n    border-bottom: dashed #f1f1f1 1px; }\n    .container .item .left {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
-
+exports.locals = {
+	"container": "schedule--container--2MAZcRDJ",
+	"item": "schedule--item--qUPsaci_",
+	"left": "schedule--left--3Enw3mzz"
+};
 
 /***/ }),
 /* 350 */
@@ -46040,7 +46142,7 @@ exports = module.exports = __webpack_require__(8)();
 
 
 // module
-exports.push([module.i, ".info-shower--container--3_xPFwzK {\n  display: block;\n  font-size: 13px; }\n  .info-shower--container--3_xPFwzK .info-shower--item--3t7209Am {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n    .info-shower--container--3_xPFwzK .info-shower--item--3t7209Am .info-shower--title--BIbbz2uo {\n      color: #596063;\n      width: 120px;\n      font-weight: 300; }\n    .info-shower--container--3_xPFwzK .info-shower--item--3t7209Am .info-shower--desc--3HRkCBDp {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      color: #c5cacc; }\n", "", {"version":3,"sources":["/./src/app/components/css/info-shower.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,gBAAgB,EAAE;EAClB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc,EAAE;IAChB;MACE,eAAe;MACf,aAAa;MACb,iBAAiB,EAAE;IACrB;MACE,oBAAoB;UAChB,YAAY;cACR,QAAQ;MAChB,eAAe,EAAE","file":"info-shower.scss","sourcesContent":[".container {\n  display: block;\n  font-size: 13px; }\n  .container .item {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n    .container .item .title {\n      color: #596063;\n      width: 120px;\n      font-weight: 300; }\n    .container .item .desc {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      color: #c5cacc; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".info-shower--container--3_xPFwzK {\n  display: block;\n  font-size: 13px; }\n  .info-shower--container--3_xPFwzK .info-shower--item--3t7209Am {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n    .info-shower--container--3_xPFwzK .info-shower--item--3t7209Am .info-shower--title--BIbbz2uo {\n      color: #596063;\n      width: 120px;\n      font-weight: 600; }\n    .info-shower--container--3_xPFwzK .info-shower--item--3t7209Am .info-shower--desc--3HRkCBDp {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      color: #919597; }\n", "", {"version":3,"sources":["/./src/app/components/css/info-shower.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,gBAAgB,EAAE;EAClB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc,EAAE;IAChB;MACE,eAAe;MACf,aAAa;MACb,iBAAiB,EAAE;IACrB;MACE,oBAAoB;UAChB,YAAY;cACR,QAAQ;MAChB,eAAe,EAAE","file":"info-shower.scss","sourcesContent":[".container {\n  display: block;\n  font-size: 13px; }\n  .container .item {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n    .container .item .title {\n      color: #596063;\n      width: 120px;\n      font-weight: 600; }\n    .container .item .desc {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      color: #919597; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
@@ -46104,6 +46206,162 @@ if(false) {
 	if(!content.locals) {
 		module.hot.accept("!!../../../../node_modules/css-loader/index.js??ref--1-1!../../../../node_modules/postcss-loader/lib/index.js!../../../../node_modules/sass-loader/lib/loader.js!./info-shower.scss", function() {
 			var newContent = require("!!../../../../node_modules/css-loader/index.js??ref--1-1!../../../../node_modules/postcss-loader/lib/index.js!../../../../node_modules/sass-loader/lib/loader.js!./info-shower.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 372 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _closableCard = __webpack_require__(374);
+
+var _closableCard2 = _interopRequireDefault(_closableCard);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
+
+
+//STYLES
+
+
+//COMPONENT
+var ClosableCard = function (_Component) {
+  _inherits(ClosableCard, _Component);
+
+  function ClosableCard() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, ClosableCard);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ClosableCard.__proto__ || Object.getPrototypeOf(ClosableCard)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      open: true
+    }, _this.toggleCard = function () {
+      _this.setState({ open: !_this.state.open });
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(ClosableCard, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var open = this.props.open;
+      if (open !== undefined) this.setState({ open: open });
+    }
+  }, {
+    key: 'renderContent',
+    value: function renderContent() {
+      if (this.state.open) return _react2.default.createElement(
+        'div',
+        { className: _closableCard2.default.content },
+        this.props.children
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var open = this.state.open;
+
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: _closableCard2.default.container },
+          _react2.default.createElement(
+            'div',
+            { className: _closableCard2.default.header, onClick: this.toggleCard },
+            _react2.default.createElement(
+              'span',
+              { className: _closableCard2.default.title },
+              this.props.title
+            ),
+            _react2.default.createElement(
+              'span',
+              { className: "material-icons " + _closableCard2.default.icon },
+              'keyboard_arrow_' + (open ? 'down' : 'up')
+            )
+          ),
+          this.renderContent()
+        )
+      );
+    }
+  }]);
+
+  return ClosableCard;
+}(_react.Component);
+
+exports.default = ClosableCard;
+
+/***/ }),
+/* 373 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(8)();
+// imports
+
+
+// module
+exports.push([module.i, ".closable-card--container--gCyYfY4o {\n  display: block;\n  background: white;\n  border-radius: 5px;\n  -webkit-box-shadow: 1px 3px 3px 0px #d5d5d5;\n          box-shadow: 1px 3px 3px 0px #d5d5d5;\n  position: relative;\n  margin: 10px;\n  width: 370px;\n  margin-bottom: 20px; }\n  .closable-card--container--gCyYfY4o .closable-card--header--1sukTbUD {\n    padding: 0 30px;\n    border-radius: 5px 5px 0 0;\n    color: white;\n    font-size: 30px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    height: 152px;\n    cursor: pointer;\n    background: #2980b9; }\n  .closable-card--container--gCyYfY4o .closable-card--content--EWoWbjsw {\n    padding: 30px;\n    border-radius: 0 0 5px 5px; }\n", "", {"version":3,"sources":["/./src/app/components/css/closable-card.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,kBAAkB;EAClB,mBAAmB;EACnB,4CAA4C;UACpC,oCAAoC;EAC5C,mBAAmB;EACnB,aAAa;EACb,aAAa;EACb,oBAAoB,EAAE;EACtB;IACE,gBAAgB;IAChB,2BAA2B;IAC3B,aAAa;IACb,gBAAgB;IAChB,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,0BAA0B;QACtB,uBAAuB;YACnB,+BAA+B;IACvC,0BAA0B;QACtB,uBAAuB;YACnB,oBAAoB;IAC5B,cAAc;IACd,gBAAgB;IAChB,oBAAoB,EAAE;EACxB;IACE,cAAc;IACd,2BAA2B,EAAE","file":"closable-card.scss","sourcesContent":[".container {\n  display: block;\n  background: white;\n  border-radius: 5px;\n  -webkit-box-shadow: 1px 3px 3px 0px #d5d5d5;\n          box-shadow: 1px 3px 3px 0px #d5d5d5;\n  position: relative;\n  margin: 10px;\n  width: 370px;\n  margin-bottom: 20px; }\n  .container .header {\n    padding: 0 30px;\n    border-radius: 5px 5px 0 0;\n    color: white;\n    font-size: 30px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    height: 152px;\n    cursor: pointer;\n    background: #2980b9; }\n  .container .content {\n    padding: 30px;\n    border-radius: 0 0 5px 5px; }\n"],"sourceRoot":"webpack://"}]);
+
+// exports
+exports.locals = {
+	"container": "closable-card--container--gCyYfY4o",
+	"header": "closable-card--header--1sukTbUD",
+	"content": "closable-card--content--EWoWbjsw"
+};
+
+/***/ }),
+/* 374 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(373);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(10)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js??ref--1-1!../../../../node_modules/postcss-loader/lib/index.js!../../../../node_modules/sass-loader/lib/loader.js!./closable-card.scss", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js??ref--1-1!../../../../node_modules/postcss-loader/lib/index.js!../../../../node_modules/sass-loader/lib/loader.js!./closable-card.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
