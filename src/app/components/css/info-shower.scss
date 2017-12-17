@@ -1,0 +1,19 @@
+.container {
+  display: block;
+  font-size: 13px;
+
+  .item {
+    display: flex;
+
+    .title {
+      color: #596063;
+      width: 120px;
+      font-weight: 300;
+    }
+
+    .desc {
+      flex: 1;
+      color: #c5cacc;
+    }
+  }
+}

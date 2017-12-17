@@ -2,11 +2,11 @@
 import React, { Component } from 'react'
 import Input from 'react-toolbox/lib/input'
 import Checkbox from 'react-toolbox/lib/checkbox'
-import {Button, IconButton} from 'react-toolbox/lib/button';
+import {Button, IconButton} from 'react-toolbox/lib/button'
 
 //STYLE
 import style from './login.scss'
-import theme from 'css/common-button'
+import theme from '../../css/common-button.scss'
 
 //COMPONENT
 export default class Login extends Component {

@@ -1,5 +1,59 @@
 .container {
-  display: block;
+  display: flex;
   padding: 20px;
-  font-size: 12pt;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .card-title {
+    font-size: 22px;
+    color: #2980b9;
+    margin-bottom: 30px;
+  }
+
+  .profile-header, .dosbim-header {
+    display: flex;
+    margin-bottom: 30px;
+    position: relative;
+    min-width: 360px;
+    
+    .pic {
+      border-radius: 100px;
+      border: solid #2980ba 3px;
+      margin-right: 20px;
+
+      .img {
+        font-size: 75pt;
+        display: block;
+      }
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      .nama {
+        font-size: 20px;
+        color: #596063;
+      }
+  
+      .nim {
+        font-size: 15px;
+        color: #bdc4c6;
+      }
+    }
+
+    .activation {
+      display: block;
+      background: #2980ba;
+      padding: 3px 15px;
+      font-size: 12pt;
+      position: absolute;
+      color: white;
+      border-radius: 7px;
+      font-weight: 700;
+      right: 0px;
+      bottom: -20px;
+    }
+  }
 }
