@@ -9,6 +9,7 @@ import style from './css/khs.scss'
 
 //COMPONENTS
 import Table from '../../components/Table'
+import Loading from '../../components/Loading'
 import Card from '../../components/SelectableCard'
 /*
 {
@@ -47,10 +48,10 @@ export default class KHS extends Component {
               this.setState({active: true})
 
               axios.get('/json/classmate.json').then(res => {
-                console.log(res.data)
+                if (res.data.mahasiswa)
                 this.setState({title: `${data.matkul} Classmate`, classmate: {
                   header: ['No', 'NIM', 'Nama'],
-                  content: _.map(res.data, (data, i) => {
+                  content: _.map(res.data.mahasiswa, (data, i) => {
                     return {data: [i + 1, data.nim, data.nama]}
                   })
                 }})
@@ -94,11 +95,16 @@ export default class KHS extends Component {
     { label: "Close", onClick: this.handleToggle },
   ]
 
+  renderTable() {
+    if (this.state.schedule) return <Table data={this.state.schedule} />
+    return <Loading circular wrapped={false} width={300} height={300} center/>
+  }
+
   render() {
     return (
       <div className={style.container}>
         <Card onClick={this.onSemesterClicked}>
-          <Table data={this.state.schedule} />
+          {this.renderTable()}
         </Card>
         <Dialog
           actions={this.actions}
@@ -108,7 +114,10 @@ export default class KHS extends Component {
           title={this.state.modalTitle}
         >
           <div className={style['modals-wrapper']}>
-          {this.renderModals()}
+          {
+            this.state.classmate ? this.renderModals() : 
+            <Loading circular wrapped={false} width="100%" height="300px" center/>
+          }
           </div>
         </Dialog>
       </div>

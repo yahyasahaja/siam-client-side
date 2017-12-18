@@ -13,33 +13,44 @@ import InfoShower from '../../components/InfoShower'
 //COMPONENT
 export default class Home extends Component {
   componentDidMount() {
-    axios.get('/json/profile.json').then(({ data }) => {
+    axios.get('/json/mahasiswa.json').then(({ data }) => {
+      console.log(data)
       if (data)
         this.setState({
           profile: [
-            { title: 'Fakultas', desc: data.fakultas },
-            { title: 'Program Studi', desc: data.program_studi },
-            { title: 'Email', desc: data.email },
+            { title: 'Fakultas', desc: data.fakultas.nama },
+            { title: 'Program Studi', desc: data.program_studi.nama },
+            { title: 'Email', desc: `${data.mahasiswa.nim}@student.ub.ac.id` },
           ],
           profileHeader: {
-            nama: data.nama,
-            nim: data.nim,
-            active: data.active,
-          }
-        })
-    })
-
-    axios.get('/json/dosbim.json').then(({data}) => {
-      if (data)
-        this.setState({
+            nama: data.mahasiswa.nama,
+            nim: data.mahasiswa.nim,
+            active: true,
+          },
           dosbim: [
-            { title: 'Ruang', desc: data.ruang},
-            { title: 'Email', desc: data.email }
+            { title: 'NIP', desc: data.mahasiswa.nip_pembimbing },
+            { title: 'Ruang', desc: 'C1.3' },
+            { title: 'Email', desc: 'wellypurnomo@ub.ac.id' },
           ],
           dosbimHeader: {
-            nama: data.nama,
-            nip: data.nip,
-          }
+            nama: data.mahasiswa.dosen_pembimbing,
+          },
+          kaprodi: [
+            { title: 'NIP', desc: '372853285'},
+            { title: 'Ruang', desc: 'C1.3' },
+            { title: 'Email', desc: 'dosen@ub.ac.id' },
+          ],
+          kaprodiHeader: {
+            nama: data.program_studi.prodi,
+          },
+          dekan: [
+            { title: 'NIP', desc: '372853285'},
+            { title: 'Ruang', desc: 'C1.3' },
+            { title: 'Email', desc: 'dosen@ub.ac.id' },
+          ],
+          dekanHeader: {
+            nama: data.fakultas.dekan,
+          },
         })
     })
   }
@@ -49,6 +60,10 @@ export default class Home extends Component {
     profileHeader: {},
     dosbim: null,
     dosbimHeader: {},
+    kaprodi: null,
+    kaprodiHeader: {},
+    dekan: null,
+    dekanHeader: {},
   }
 
   renderActivation() {
@@ -58,7 +73,7 @@ export default class Home extends Component {
   }
 
   render() {
-    let { profileHeader, dosbimHeader } = this.state
+    let { profileHeader, dosbimHeader, kaprodiHeader, dekanHeader } = this.state
 
     return (
       <div className={style.container}>
@@ -82,7 +97,6 @@ export default class Home extends Component {
           <div className={style['dosbim-header']}>
             <div className={style.wrapper}>
               <div className={style.nama}><span>{dosbimHeader.nama}</span></div>
-              <div className={style.nim}><span>{dosbimHeader.nim}</span></div>
             </div>
           </div>
           
@@ -93,24 +107,22 @@ export default class Home extends Component {
           <h1 className={style['card-title']}>Dekan</h1>
           <div className={style['dosbim-header']}>
             <div className={style.wrapper}>
-              <div className={style.nama}><span>{dosbimHeader.nama}</span></div>
-              <div className={style.nim}><span>{dosbimHeader.nim}</span></div>
+              <div className={style.nama}><span>{dekanHeader.nama}</span></div>
             </div>
           </div>
           
-          <InfoShower data={this.state.dosbim} />
+          <InfoShower data={this.state.dekan} />
         </Card>
 
         <Card>
           <h1 className={style['card-title']}>Kepala Program Studi</h1>
           <div className={style['dosbim-header']}>
             <div className={style.wrapper}>
-              <div className={style.nama}><span>{dosbimHeader.nama}</span></div>
-              <div className={style.nim}><span>{dosbimHeader.nim}</span></div>
+              <div className={style.nama}><span>{kaprodiHeader.nama}</span></div>
             </div>
           </div>
           
-          <InfoShower data={this.state.dosbim} />
+          <InfoShower data={this.state.kaprodi} />
         </Card>
       </div>
     )

@@ -1,0 +1,158 @@
+{
+  "fakultas": {
+    "dekan": "Jessica Langdon",
+    "nama": "Ilmu Komputer"
+  },
+  "mahasiswa": {
+    "dosen_pembimbing": "Virginia Wilkins",
+    "nama": "Gracelyn Moreno",
+    "nim": "201610006401001",
+    "nip_pembimbing": "103057",
+    "prodi": "Teknik Komputer",
+    "tgl_lahir": "Fri, 30 May 1997 00:00:00 GMT"
+  },
+  "program_studi": {
+    "nama": "Teknik Komputer",
+    "prodi": "Sarah Stewart"
+  },
+  "sesi_kuliah": {
+    "Fri": [{
+      "gedung": "C",
+      "id": 29,
+      "kelas": "E",
+      "kode": "CS5503",
+      "nama": "Sistem Operasi",
+      "nilai": 72,
+      "nilai_huruf": "B",
+      "ruangan": "1.2",
+      "semester": "genap",
+      "sks": 2,
+      "tahun": 2017,
+      "waktu_mulai": "13:30:00",
+      "waktu_selesai": "15:00:00"
+    }],
+    "Mon": [{
+        "gedung": "B",
+        "id": 25,
+        "kelas": "E",
+        "kode": "CS5502",
+        "nama": "Arsitektur dan Org. Komp.",
+        "nilai": 83,
+        "nilai_huruf": "A",
+        "ruangan": "1.3",
+        "semester": "genap",
+        "sks": 4,
+        "tahun": 2017,
+        "waktu_mulai": "10:00:00",
+        "waktu_selesai": "12:00:00"
+      },
+      {
+        "gedung": "C",
+        "id": 20,
+        "kelas": "C",
+        "kode": "CS5501",
+        "nama": "Sistem Digital",
+        "nilai": 77,
+        "nilai_huruf": "B+",
+        "ruangan": "2.3",
+        "semester": "genap",
+        "sks": 3,
+        "tahun": 2017,
+        "waktu_mulai": "10:00:00",
+        "waktu_selesai": "12:00:00"
+      },
+      {
+        "gedung": "C",
+        "id": 23,
+        "kelas": "C",
+        "kode": "CS5502",
+        "nama": "Arsitektur dan Org. Komp.",
+        "nilai": 74,
+        "nilai_huruf": "B",
+        "ruangan": "1.3",
+        "semester": "genap",
+        "sks": 4,
+        "tahun": 2017,
+        "waktu_mulai": "07:00:00",
+        "waktu_selesai": "08:30:00"
+      }
+    ],
+    "Thu": [{
+        "gedung": "A",
+        "id": 22,
+        "kelas": "B",
+        "kode": "CS5502",
+        "nama": "Arsitektur dan Org. Komp.",
+        "nilai": 79,
+        "nilai_huruf": "B+",
+        "ruangan": "1.5",
+        "semester": "genap",
+        "sks": 4,
+        "tahun": 2017,
+        "waktu_mulai": "10:30:00",
+        "waktu_selesai": "11:45:00"
+      },
+      {
+        "gedung": "C",
+        "id": 20,
+        "kelas": "C",
+        "kode": "CS5501",
+        "nama": "Sistem Digital",
+        "nilai": 77,
+        "nilai_huruf": "B+",
+        "ruangan": "2.3",
+        "semester": "genap",
+        "sks": 3,
+        "tahun": 2017,
+        "waktu_mulai": "07:00:00",
+        "waktu_selesai": "08:30:00"
+      },
+      {
+        "gedung": "B",
+        "id": 25,
+        "kelas": "E",
+        "kode": "CS5502",
+        "nama": "Arsitektur dan Org. Komp.",
+        "nilai": 83,
+        "nilai_huruf": "A",
+        "ruangan": "1.3",
+        "semester": "genap",
+        "sks": 4,
+        "tahun": 2017,
+        "waktu_mulai": "07:00:00",
+        "waktu_selesai": "08:30:00"
+      }
+    ],
+    "Tue": [{
+        "gedung": "A",
+        "id": 22,
+        "kelas": "B",
+        "kode": "CS5502",
+        "nama": "Arsitektur dan Org. Komp.",
+        "nilai": 79,
+        "nilai_huruf": "B+",
+        "ruangan": "1.5",
+        "semester": "genap",
+        "sks": 4,
+        "tahun": 2017,
+        "waktu_mulai": "10:30:00",
+        "waktu_selesai": "11:45:00"
+      },
+      {
+        "gedung": "C",
+        "id": 23,
+        "kelas": "C",
+        "kode": "CS5502",
+        "nama": "Arsitektur dan Org. Komp.",
+        "nilai": 74,
+        "nilai_huruf": "B",
+        "ruangan": "1.3",
+        "semester": "genap",
+        "sks": 4,
+        "tahun": 2017,
+        "waktu_mulai": "10:00:00",
+        "waktu_selesai": "11:30:00"
+      }
+    ]
+  }
+}

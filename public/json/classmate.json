@@ -1,58 +1,24 @@
-[
-  {
-    "nim": "165150207111086",
-    "nama": "Yahya Sahaja"
-  },
-  {
-    "nim": "165150207111086",
-    "nama": "Yahya Sahaja"
-  },
-  {
-    "nim": "165150207111086",
-    "nama": "Yahya Sahaja"
-  },
-  {
-    "nim": "165150207111086",
-    "nama": "Yahya Sahaja"
-  },
-  {
-    "nim": "165150207111086",
-    "nama": "Yahya Sahaja"
-  },
-  {
-    "nim": "165150207111086",
-    "nama": "Yahya Sahaja"
-  },
-  {
-    "nim": "165150207111086",
-    "nama": "Yahya Sahaja"
-  },
-  {
-    "nim": "165150207111086",
-    "nama": "Yahya Sahaja"
-  },
-  {
-    "nim": "165150207111086",
-    "nama": "Yahya Sahaja"
-  },
-  {
-    "nim": "165150207111086",
-    "nama": "Yahya Sahaja"
-  },
-  {
-    "nim": "165150207111086",
-    "nama": "Yahya Sahaja"
-  },
-  {
-    "nim": "165150207111086",
-    "nama": "Yahya Sahaja"
-  },
-  {
-    "nim": "165150207111086",
-    "nama": "Yahya Sahaja"
-  },
-  {
-    "nim": "165150207111086",
-    "nama": "Yahya Sahaja"
+{
+  "mahasiswa": [
+      {
+          "nama": "Gracelyn Moreno",
+          "nim": "201610006401001"
+      },
+      {
+          "nama": "Odin Brewer",
+          "nim": "201610006401001"
+      },
+      {
+          "nama": "Dax Johnston",
+          "nim": "201610006401001"
+      },
+      {
+          "nama": "Aubrey Lucas",
+          "nim": "201610006401001"
+      }
+  ],
+  "sesi_kuliah": {
+      "kode_matakuliah": "CS5502",
+      "matakuliah": "Arsitektur dan Org. Komp."
   }
-]
+}

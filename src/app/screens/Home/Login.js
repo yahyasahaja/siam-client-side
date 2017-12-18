@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Input from 'react-toolbox/lib/input'
 import Checkbox from 'react-toolbox/lib/checkbox'
 import {Button, IconButton} from 'react-toolbox/lib/button'
+import axios from 'axios'
 
 //STYLE
 import style from './css/login.scss'
@@ -22,8 +23,14 @@ export default class Login extends Component {
 
   onSubmit = e => {
     e.preventDefault()
-
-    console.log('submitted')
+    let { username, password } = this.state
+    
+    axios.post('/auth/login', {
+      username,
+      password
+    }).then(res => {
+      console.log(res.data)
+    })
   }
 
   render() {

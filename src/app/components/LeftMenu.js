@@ -2,13 +2,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import _ from 'lodash'
+import axios from 'axios'
 
 //STYLE
 import style from './css/left-menu.scss'
 
 //COMPONENTS
 
-//INNER_CONFIG
+//CONFIG
+import { TOKEN_URI } from '../config'
 
 //COMPONENT
 export default class LeftMenu extends Component {
@@ -31,7 +33,11 @@ export default class LeftMenu extends Component {
     { icon: 'date_range', link: '/dashboard/schedule', label: 'Schedule' },
     { icon: 'assignment', link: '/dashboard/khs', label: 'KHS'},
     { icon: 'settings', link: '/dashboard/settings', label: 'Settings'},
-    { icon: 'exit_to_app', onClick: () => console.log('logging out'), label: 'Log Out', red: true}
+    { icon: 'exit_to_app', onClick: () => {
+      localStorage.removeItem(TOKEN_URI)
+      axios.defaults.headers.common['Authorization'] = null
+      this.props.history.push('/')
+    }, label: 'Log Out', red: true}
   ]
 
   renderMenuItem() {

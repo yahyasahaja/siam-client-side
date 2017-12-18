@@ -23804,14 +23804,24 @@ var _Dashboard = __webpack_require__(341);
 
 var _Dashboard2 = _interopRequireDefault(_Dashboard);
 
+var _config = __webpack_require__(414);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //MODULES
 
+
+//COMPONENTS
+
+
+//CONFIG
+
+
+//COMPONENT
 var AppRouter = function (_Component) {
   _inherits(AppRouter, _Component);
 
@@ -23824,8 +23834,9 @@ var AppRouter = function (_Component) {
   _createClass(AppRouter, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
+      var token = localStorage.getItem(_config.TOKEN_URI);
       _axios2.default.defaults.headers.post['Content-Type'] = 'application/json';
-      _axios2.default.defaults.headers.common['Authorization'] = localStorage.getItem('bccdrophere_token');
+      if (token) _axios2.default.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     }
   }, {
     key: 'render',
@@ -44421,9 +44432,15 @@ var _lodash = __webpack_require__(23);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
+var _axios = __webpack_require__(22);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 var _leftMenu = __webpack_require__(378);
 
 var _leftMenu2 = _interopRequireDefault(_leftMenu);
+
+var _config = __webpack_require__(414);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44439,7 +44456,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 //COMPONENTS
 
-//INNER_CONFIG
+//CONFIG
+
 
 //COMPONENT
 var LeftMenu = function (_Component) {
@@ -44459,7 +44477,9 @@ var LeftMenu = function (_Component) {
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LeftMenu.__proto__ || Object.getPrototypeOf(LeftMenu)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       selected: 0
     }, _this.menuData = [{ icon: 'home', link: '/dashboard/home', label: 'Home' }, { icon: 'date_range', link: '/dashboard/schedule', label: 'Schedule' }, { icon: 'assignment', link: '/dashboard/khs', label: 'KHS' }, { icon: 'settings', link: '/dashboard/settings', label: 'Settings' }, { icon: 'exit_to_app', onClick: function onClick() {
-        return console.log('logging out');
+        localStorage.removeItem(_config.TOKEN_URI);
+        _axios2.default.defaults.headers.common['Authorization'] = null;
+        _this.props.history.push('/');
       }, label: 'Log Out', red: true }], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -44932,13 +44952,7 @@ var Table = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      if (!this.props.data) return _react2.default.createElement(
-        'div',
-        { style: {
-            width: 300, height: 300, display: 'flex', justifyContent: 'center', alignItems: 'center'
-          } },
-        _react2.default.createElement(_Loading2.default, { circular: true, wrapped: false })
-      );
+      if (!this.props.data) return _react2.default.createElement(_Loading2.default, { circular: true, wrapped: false });
 
       return _react2.default.createElement(
         'div',
@@ -45139,7 +45153,11 @@ var Home = function (_Component) {
       profile: null,
       profileHeader: {},
       dosbim: null,
-      dosbimHeader: {}
+      dosbimHeader: {},
+      kaprodi: null,
+      kaprodiHeader: {},
+      dekan: null,
+      dekanHeader: {}
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -45148,27 +45166,28 @@ var Home = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      _axios2.default.get('/json/profile.json').then(function (_ref2) {
+      _axios2.default.get('/json/mahasiswa.json').then(function (_ref2) {
         var data = _ref2.data;
 
+        console.log(data);
         if (data) _this2.setState({
-          profile: [{ title: 'Fakultas', desc: data.fakultas }, { title: 'Program Studi', desc: data.program_studi }, { title: 'Email', desc: data.email }],
+          profile: [{ title: 'Fakultas', desc: data.fakultas.nama }, { title: 'Program Studi', desc: data.program_studi.nama }, { title: 'Email', desc: data.mahasiswa.nim + '@student.ub.ac.id' }],
           profileHeader: {
-            nama: data.nama,
-            nim: data.nim,
-            active: data.active
-          }
-        });
-      });
-
-      _axios2.default.get('/json/dosbim.json').then(function (_ref3) {
-        var data = _ref3.data;
-
-        if (data) _this2.setState({
-          dosbim: [{ title: 'Ruang', desc: data.ruang }, { title: 'Email', desc: data.email }],
+            nama: data.mahasiswa.nama,
+            nim: data.mahasiswa.nim,
+            active: true
+          },
+          dosbim: [{ title: 'NIP', desc: data.mahasiswa.nip_pembimbing }, { title: 'Ruang', desc: 'C1.3' }, { title: 'Email', desc: 'wellypurnomo@ub.ac.id' }],
           dosbimHeader: {
-            nama: data.nama,
-            nip: data.nip
+            nama: data.mahasiswa.dosen_pembimbing
+          },
+          kaprodi: [{ title: 'NIP', desc: '372853285' }, { title: 'Ruang', desc: 'C1.3' }, { title: 'Email', desc: 'dosen@ub.ac.id' }],
+          kaprodiHeader: {
+            nama: data.program_studi.prodi
+          },
+          dekan: [{ title: 'NIP', desc: '372853285' }, { title: 'Ruang', desc: 'C1.3' }, { title: 'Email', desc: 'dosen@ub.ac.id' }],
+          dekanHeader: {
+            nama: data.fakultas.dekan
           }
         });
       });
@@ -45186,7 +45205,9 @@ var Home = function (_Component) {
     value: function render() {
       var _state = this.state,
           profileHeader = _state.profileHeader,
-          dosbimHeader = _state.dosbimHeader;
+          dosbimHeader = _state.dosbimHeader,
+          kaprodiHeader = _state.kaprodiHeader,
+          dekanHeader = _state.dekanHeader;
 
 
       return _react2.default.createElement(
@@ -45263,15 +45284,6 @@ var Home = function (_Component) {
                   null,
                   dosbimHeader.nama
                 )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: _home2.default.nim },
-                _react2.default.createElement(
-                  'span',
-                  null,
-                  dosbimHeader.nim
-                )
               )
             )
           ),
@@ -45297,21 +45309,12 @@ var Home = function (_Component) {
                 _react2.default.createElement(
                   'span',
                   null,
-                  dosbimHeader.nama
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: _home2.default.nim },
-                _react2.default.createElement(
-                  'span',
-                  null,
-                  dosbimHeader.nim
+                  dekanHeader.nama
                 )
               )
             )
           ),
-          _react2.default.createElement(_InfoShower2.default, { data: this.state.dosbim })
+          _react2.default.createElement(_InfoShower2.default, { data: this.state.dekan })
         ),
         _react2.default.createElement(
           _Card2.default,
@@ -45333,21 +45336,12 @@ var Home = function (_Component) {
                 _react2.default.createElement(
                   'span',
                   null,
-                  dosbimHeader.nama
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: _home2.default.nim },
-                _react2.default.createElement(
-                  'span',
-                  null,
-                  dosbimHeader.nim
+                  kaprodiHeader.nama
                 )
               )
             )
           ),
-          _react2.default.createElement(_InfoShower2.default, { data: this.state.dosbim })
+          _react2.default.createElement(_InfoShower2.default, { data: this.state.kaprodi })
         )
       );
     }
@@ -45394,6 +45388,10 @@ var _khs2 = _interopRequireDefault(_khs);
 var _Table = __webpack_require__(336);
 
 var _Table2 = _interopRequireDefault(_Table);
+
+var _Loading = __webpack_require__(409);
+
+var _Loading2 = _interopRequireDefault(_Loading);
 
 var _SelectableCard = __webpack_require__(335);
 
@@ -45483,10 +45481,9 @@ var KHS = function (_Component) {
                     _this2.setState({ active: true });
 
                     _axios2.default.get('/json/classmate.json').then(function (res) {
-                      console.log(res.data);
-                      _this2.setState({ title: data.matkul + ' Classmate', classmate: {
+                      if (res.data.mahasiswa) _this2.setState({ title: data.matkul + ' Classmate', classmate: {
                           header: ['No', 'NIM', 'Nama'],
-                          content: _.map(res.data, function (data, i) {
+                          content: _.map(res.data.mahasiswa, function (data, i) {
                             return { data: [i + 1, data.nim, data.nama] };
                           })
                         } });
@@ -45513,6 +45510,12 @@ var KHS = function (_Component) {
       return _react2.default.createElement(_Table2.default, { data: this.state.classmate });
     }
   }, {
+    key: 'renderTable',
+    value: function renderTable() {
+      if (this.state.schedule) return _react2.default.createElement(_Table2.default, { data: this.state.schedule });
+      return _react2.default.createElement(_Loading2.default, { circular: true, wrapped: false, width: 300, height: 300, center: true });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -45521,7 +45524,7 @@ var KHS = function (_Component) {
         _react2.default.createElement(
           _SelectableCard2.default,
           { onClick: this.onSemesterClicked },
-          _react2.default.createElement(_Table2.default, { data: this.state.schedule })
+          this.renderTable()
         ),
         _react2.default.createElement(
           _dialog2.default,
@@ -45535,7 +45538,7 @@ var KHS = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: _khs2.default['modals-wrapper'] },
-            this.renderModals()
+            this.state.classmate ? this.renderModals() : _react2.default.createElement(_Loading2.default, { circular: true, wrapped: false, width: '100%', height: '300px', center: true })
           )
         )
       );
@@ -45628,7 +45631,7 @@ var Shcedule = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      _axios2.default.get('/json/schedule.json').then(function (res, i) {
+      _axios2.default.get('/json/mahasiswa.json').then(function (res, i) {
         _this2.setState({
           schedule: res.data
         });
@@ -45642,7 +45645,19 @@ var Shcedule = function (_Component) {
       var schedule = this.state.schedule;
 
 
-      if (schedule) return _lodash2.default.map(schedule, function (data, i) {
+      if (!schedule) return;
+
+      var data = schedule.sesi_kuliah;
+      var parsedData = [];
+
+      parsedData.push(data.Mon ? data.Mon : null);
+      parsedData.push(data.Tue ? data.Tue : null);
+      parsedData.push(data.Wed ? data.Wed : null);
+      parsedData.push(data.Thu ? data.Thu : null);
+      parsedData.push(data.Fri ? data.Fri : null);
+      parsedData.push(data.Sat ? data.Sat : null);
+
+      return _lodash2.default.map(parsedData, function (data, i) {
         if (!data || i > 5) return;
         return _react2.default.createElement(
           _ClosableCard2.default,
@@ -45664,12 +45679,12 @@ var Shcedule = function (_Component) {
             _react2.default.createElement(
               'span',
               null,
-              res.matkul
+              res.nama
             ),
             _react2.default.createElement(
               'span',
               null,
-              res.ruang
+              '' + res.gedung + res.ruangan
             )
           ),
           _react2.default.createElement(
@@ -45678,7 +45693,7 @@ var Shcedule = function (_Component) {
             _react2.default.createElement(
               'span',
               null,
-              res.waktu_mulai + ' - ' + res.waktu_selesai
+              res.waktu_mulai.substr(0, 5) + ' - ' + res.waktu_selesai.substr(0, 5)
             )
           )
         );
@@ -46033,6 +46048,10 @@ var _checkbox2 = _interopRequireDefault(_checkbox);
 
 var _button = __webpack_require__(124);
 
+var _axios = __webpack_require__(22);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 var _login = __webpack_require__(396);
 
 var _login2 = _interopRequireDefault(_login);
@@ -46078,8 +46097,17 @@ var Login = function (_Component) {
       _this.setState(_defineProperty({}, name, value));
     }, _this.onSubmit = function (e) {
       e.preventDefault();
+      var _this$state = _this.state,
+          username = _this$state.username,
+          password = _this$state.password;
 
-      console.log('submitted');
+
+      _axios2.default.post('/auth/login', {
+        username: username,
+        password: password
+      }).then(function (res) {
+        console.log(res.data);
+      });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -48655,7 +48683,9 @@ exports.default = function (_ref) {
       circular = _ref.circular,
       _ref$wrapped = _ref.wrapped,
       wrapped = _ref$wrapped === undefined ? true : _ref$wrapped,
-      center = _ref.center;
+      center = _ref.center,
+      width = _ref.width,
+      height = _ref.height;
 
   var centerStyle = {};
   if (center) centerStyle = {
@@ -48664,6 +48694,9 @@ exports.default = function (_ref) {
     display: 'flex',
     alignItems: 'center'
   };
+
+  if (height !== undefined) centerStyle.height = height;
+  if (width !== undefined) centerStyle.width = width;
 
   return _react2.default.createElement(
     'div',
@@ -48803,6 +48836,26 @@ if(false) {
 	// When the module is disposed, remove the <style> tags
 	module.hot.dispose(function() { update(); });
 }
+
+/***/ }),
+/* 414 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var endpointURL = exports.endpointURL = 'https://bccdrophere-filkom.ub.ac.id/graphql';
+var uploadURL = exports.uploadURL = 'https://bccdrophere-filkom.ub.ac.id/uploadfile';
+var TOKEN_URI = exports.TOKEN_URI = 'siam_token';
+
+exports.default = {
+  endpointURL: endpointURL,
+  uploadURL: uploadURL,
+  TOKEN_URI: TOKEN_URI
+};
 
 /***/ })
 /******/ ]);

@@ -3,7 +3,7 @@ import ProgressBar from 'react-toolbox/lib/progress_bar';
 
 import style from 'css/loading.scss';
 
-export default ({ cube, circular, wrapped = true, center }) => {
+export default ({ cube, circular, wrapped = true, center, width, height }) => {
   let centerStyle = {}
   if (center) centerStyle = {
     width: '100%',
@@ -11,6 +11,9 @@ export default ({ cube, circular, wrapped = true, center }) => {
     display: 'flex',
     alignItems: 'center',
   }
+
+  if (height !== undefined) centerStyle.height = height
+  if (width !== undefined) centerStyle.width = width
 
   return (
     <div
