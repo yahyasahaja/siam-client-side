@@ -176,7 +176,11 @@ export default class Table extends Component {
   }
 
   render() {
-    if (!this.props.data) return <Loading circular wrapped={false} width={300} height={300} />
+    if (this.props.data) return <div style={{
+        width: 300, height: 300, display: 'flex', justifyContent: 'center', alignItems: 'center'
+      }}>
+      <Loading circular wrapped={false}/>
+    </div>
 
     return (
       <div className={style['container']}>

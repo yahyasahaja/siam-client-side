@@ -44932,7 +44932,13 @@ var Table = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      if (!this.props.data) return _react2.default.createElement(_Loading2.default, { circular: true, wrapped: false, width: 300, height: 300 });
+      if (this.props.data) return _react2.default.createElement(
+        'div',
+        { style: {
+            width: 300, height: 300, display: 'flex', justifyContent: 'center', alignItems: 'center'
+          } },
+        _react2.default.createElement(_Loading2.default, { circular: true, wrapped: false })
+      );
 
       return _react2.default.createElement(
         'div',
@@ -45681,12 +45687,10 @@ var Shcedule = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      if (!this.state.schedule) return _react2.default.createElement(_Loading2.default, { circular: true, wrapped: false, width: 300, height: 300 });
-
       return _react2.default.createElement(
         'div',
         { className: _schedule2.default.container },
-        this.renderCards()
+        this.state.schedule ? _react2.default.createElement(_Loading2.default, { circular: true, wrapped: false, center: true }) : this.renderCards()
       );
     }
   }]);
@@ -46644,7 +46648,7 @@ exports = module.exports = __webpack_require__(5)();
 
 
 // module
-exports.push([module.i, ".schedule--container--2MAZcRDJ {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 20px;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding: 90px 20px 20px 132px;\n  background: #ededed; }\n  .schedule--container--2MAZcRDJ .schedule--item--qUPsaci_ {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    font-weight: 500;\n    margin-bottom: 10px;\n    padding-bottom: 10px;\n    border-bottom: dashed #f1f1f1 1px; }\n    .schedule--container--2MAZcRDJ .schedule--item--qUPsaci_ .schedule--left--3Enw3mzz {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n", "", {"version":3,"sources":["/./src/app/screens/Dashboard/css/schedule.scss"],"names":[],"mappings":"AAAA;EACE,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,cAAc;EACd,oBAAoB;MAChB,gBAAgB;EACpB,yBAAyB;MACrB,sBAAsB;UAClB,wBAAwB;EAChC,8BAA8B;EAC9B,oBAAoB,EAAE;EACtB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,0BAA0B;QACtB,uBAAuB;YACnB,+BAA+B;IACvC,iBAAiB;IACjB,oBAAoB;IACpB,qBAAqB;IACrB,kCAAkC,EAAE;IACpC;MACE,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,6BAA6B;MAC7B,8BAA8B;UAC1B,2BAA2B;cACvB,uBAAuB,EAAE","file":"schedule.scss","sourcesContent":[".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 20px;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding: 90px 20px 20px 132px;\n  background: #ededed; }\n  .container .item {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    font-weight: 500;\n    margin-bottom: 10px;\n    padding-bottom: 10px;\n    border-bottom: dashed #f1f1f1 1px; }\n    .container .item .left {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, ".schedule--container--2MAZcRDJ {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 20px;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding: 90px 20px 20px 132px;\n  background: #ededed;\n  min-height: 100%; }\n  .schedule--container--2MAZcRDJ .schedule--item--qUPsaci_ {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    font-weight: 500;\n    margin-bottom: 10px;\n    padding-bottom: 10px;\n    border-bottom: dashed #f1f1f1 1px; }\n    .schedule--container--2MAZcRDJ .schedule--item--qUPsaci_ .schedule--left--3Enw3mzz {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n", "", {"version":3,"sources":["/./src/app/screens/Dashboard/css/schedule.scss"],"names":[],"mappings":"AAAA;EACE,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,cAAc;EACd,oBAAoB;MAChB,gBAAgB;EACpB,yBAAyB;MACrB,sBAAsB;UAClB,wBAAwB;EAChC,8BAA8B;EAC9B,oBAAoB;EACpB,iBAAiB,EAAE;EACnB;IACE,qBAAqB;IACrB,qBAAqB;IACrB,cAAc;IACd,0BAA0B;QACtB,uBAAuB;YACnB,+BAA+B;IACvC,iBAAiB;IACjB,oBAAoB;IACpB,qBAAqB;IACrB,kCAAkC,EAAE;IACpC;MACE,qBAAqB;MACrB,qBAAqB;MACrB,cAAc;MACd,6BAA6B;MAC7B,8BAA8B;UAC1B,2BAA2B;cACvB,uBAAuB,EAAE","file":"schedule.scss","sourcesContent":[".container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 20px;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding: 90px 20px 20px 132px;\n  background: #ededed;\n  min-height: 100%; }\n  .container .item {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    font-weight: 500;\n    margin-bottom: 10px;\n    padding-bottom: 10px;\n    border-bottom: dashed #f1f1f1 1px; }\n    .container .item .left {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column; }\n"],"sourceRoot":"webpack://"}]);
 
 // exports
 exports.locals = {
@@ -48651,41 +48655,44 @@ exports.default = function (_ref) {
       circular = _ref.circular,
       _ref$wrapped = _ref.wrapped,
       wrapped = _ref$wrapped === undefined ? true : _ref$wrapped,
-      width = _ref.width,
-      height = _ref.height;
+      center = _ref.center;
+
+  var centerStyle = {};
+  if (center) centerStyle = {
+    width: '100%',
+    justifyContent: 'center',
+    display: 'flex',
+    alignItems: 'center'
+  };
 
   return _react2.default.createElement(
     'div',
-    null,
+    {
+      className: !wrapped ? '' : _loading2.default.container + ' ' + _loading2.default.anim,
+      style: centerStyle
+    },
     _react2.default.createElement(
       'div',
-      {
-        className: !wrapped ? '' : _loading2.default.container + ' ' + _loading2.default.anim,
-        style: { width: width, height: height, display: 'flex', justifyContent: 'center', alignItems: 'center' }
-      },
-      _react2.default.createElement(
+      { className: !wrapped ? '' : _loading2.default.wrapper },
+      cube ? _react2.default.createElement(
         'div',
-        { className: !wrapped ? '' : _loading2.default.wrapper },
-        cube ? _react2.default.createElement(
-          'div',
-          { id: 'cube-loading', className: 'sk-cube-grid' },
-          _react2.default.createElement('div', { className: 'sk-cube sk-cube1' }),
-          _react2.default.createElement('div', { className: 'sk-cube sk-cube2' }),
-          _react2.default.createElement('div', { className: 'sk-cube sk-cube3' }),
-          _react2.default.createElement('div', { className: 'sk-cube sk-cube4' }),
-          _react2.default.createElement('div', { className: 'sk-cube sk-cube5' }),
-          _react2.default.createElement('div', { className: 'sk-cube sk-cube6' }),
-          _react2.default.createElement('div', { className: 'sk-cube sk-cube7' }),
-          _react2.default.createElement('div', { className: 'sk-cube sk-cube8' }),
-          _react2.default.createElement('div', { className: 'sk-cube sk-cube9' })
-        ) : circular ? _react2.default.createElement(
-          'div',
-          { style: { display: 'flex', justifyContent: 'center', alignItems: 'center' } },
-          _react2.default.createElement('div', { className: 'loader' }),
-          _react2.default.createElement('div', { className: 'loader2' }),
-          _react2.default.createElement('div', { className: 'loader3' })
-        ) : _react2.default.createElement(_progress_bar2.default, { type: 'circular', multicolor: true })
-      )
+        { id: 'cube-loading', className: 'sk-cube-grid' },
+        _react2.default.createElement('div', { className: 'sk-cube sk-cube1' }),
+        _react2.default.createElement('div', { className: 'sk-cube sk-cube2' }),
+        _react2.default.createElement('div', { className: 'sk-cube sk-cube3' }),
+        _react2.default.createElement('div', { className: 'sk-cube sk-cube4' }),
+        _react2.default.createElement('div', { className: 'sk-cube sk-cube5' }),
+        _react2.default.createElement('div', { className: 'sk-cube sk-cube6' }),
+        _react2.default.createElement('div', { className: 'sk-cube sk-cube7' }),
+        _react2.default.createElement('div', { className: 'sk-cube sk-cube8' }),
+        _react2.default.createElement('div', { className: 'sk-cube sk-cube9' })
+      ) : circular ? _react2.default.createElement(
+        'div',
+        { style: { display: 'flex', justifyContent: 'center', alignItems: 'center' } },
+        _react2.default.createElement('div', { className: 'loader' }),
+        _react2.default.createElement('div', { className: 'loader2' }),
+        _react2.default.createElement('div', { className: 'loader3' })
+      ) : _react2.default.createElement(_progress_bar2.default, { type: 'circular', multicolor: true })
     )
   );
 };
