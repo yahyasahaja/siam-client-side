@@ -1,0 +1,31 @@
+.container {
+  width: 100%;
+  border-radius: 10px;
+  border: #b4b4b4 dashed 1px;
+  padding: 20px;
+  padding-top: 30px;
+  position: relative;
+  background: white;
+  margin-top: 40px;
+  margin-bottom: 30px;
+
+  .wrapper-label {
+      display: block;
+      position: absolute;
+      top: -20px;
+      padding: 5px 10px;
+      border: #b4b4b4 dashed 1px;
+      background: white;
+      border-radius: 10px;
+      color: #505050;
+      font-weight: 600;
+  }
+
+  .button {
+      display: block;
+      position: absolute;
+      right: 25px;
+      top: 0;
+      transform: translateY(-50%);
+  }
+}

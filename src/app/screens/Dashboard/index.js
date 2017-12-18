@@ -10,6 +10,7 @@ import Home from './Home'
 import Schedule from './Schedule'
 import LeftMenu from '../../components/LeftMenu'
 import TopMenu from '../../components/TopMenu'
+import KHS from './KHS'
 
 //COMPONENT
 export default class Dashboard extends Component {
@@ -20,6 +21,7 @@ export default class Dashboard extends Component {
           <Redirect from="/dashboard" exact to="/dashboard/home" /> 
           <Route path="/dashboard/home" component={Home} />
           <Route path="/dashboard/schedule" component={Schedule} />
+          <Route path="/dashboard/khs" component={KHS} />
         </Switch>
         <LeftMenu {...this.props} />
         <TopMenu />

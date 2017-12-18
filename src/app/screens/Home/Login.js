@@ -6,7 +6,7 @@ import {Button, IconButton} from 'react-toolbox/lib/button'
 
 //STYLE
 import style from './login.scss'
-import theme from '../../css/common-button.scss'
+import theme from '../../css/theme-button-blue.scss'
 
 //COMPONENT
 export default class Login extends Component {
