@@ -45128,7 +45128,7 @@ var Login = function (_Component) {
               onChange: this.handleChange.bind(this, "username") }),
             _react2.default.createElement(_input2.default, (_React$createElement = {
               name: 'password',
-              label: 'Username', type: 'text' }, _defineProperty(_React$createElement, 'type', 'password'), _defineProperty(_React$createElement, 'value', this.state.password), _defineProperty(_React$createElement, 'onChange', this.handleChange.bind(this, "password")), _React$createElement)),
+              label: 'Password', type: 'text' }, _defineProperty(_React$createElement, 'type', 'password'), _defineProperty(_React$createElement, 'value', this.state.password), _defineProperty(_React$createElement, 'onChange', this.handleChange.bind(this, "password")), _React$createElement)),
             _react2.default.createElement(_checkbox2.default, {
               label: 'Remember me',
               onChange: this.handleChange.bind(this, "remember"),

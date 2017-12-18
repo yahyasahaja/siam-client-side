@@ -41,7 +41,7 @@ export default class Login extends Component {
               onChange={this.handleChange.bind(this, "username")} />
             <Input 
               name="password"
-              label="Username" type="text" type="password" value={this.state.password}
+              label="Password" type="text" type="password" value={this.state.password}
               onChange={this.handleChange.bind(this, "password")} />
 
             <Checkbox
