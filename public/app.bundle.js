@@ -44932,7 +44932,7 @@ var Table = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      if (this.props.data) return _react2.default.createElement(
+      if (!this.props.data) return _react2.default.createElement(
         'div',
         { style: {
             width: 300, height: 300, display: 'flex', justifyContent: 'center', alignItems: 'center'
@@ -45690,7 +45690,7 @@ var Shcedule = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: _schedule2.default.container },
-        this.state.schedule ? _react2.default.createElement(_Loading2.default, { circular: true, wrapped: false, center: true }) : this.renderCards()
+        !this.state.schedule ? _react2.default.createElement(_Loading2.default, { circular: true, wrapped: false, center: true }) : this.renderCards()
       );
     }
   }]);

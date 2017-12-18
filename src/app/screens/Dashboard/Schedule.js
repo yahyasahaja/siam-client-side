@@ -58,7 +58,7 @@ export default class Shcedule extends Component {
   render() {
     return (
       <div className={style.container}>
-        {this.state.schedule ? <Loading circular wrapped={false} center /> :
+        {!this.state.schedule ? <Loading circular wrapped={false} center /> :
         this.renderCards()}
       </div>
     )
