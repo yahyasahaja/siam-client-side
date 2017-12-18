@@ -32,13 +32,8 @@
 
   .right {
     display: flex;
-    cursor: pointer;
     align-items: center;
     opacity: 1;
-
-    &:hover {
-      opacity: .7;
-    }
 
     .material-icons {
       font-size: 20pt;

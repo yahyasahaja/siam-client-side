@@ -28,10 +28,9 @@ export default class TopMenu extends Component {
           <h1>SIAM</h1>
         </div>
 
-        <div className={style.right} onClick={this.toggleOpenMenu}>
+        <div className={style.right}>
           <span className="material-icons">account_circle</span>
           <span className={style.name}>Yahya Sahaja</span>
-          <span className="material-icons">keyboard_arrow_down</span>
         </div>
       </div>
     );

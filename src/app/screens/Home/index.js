@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 //STYLE
-import style from './home.scss'
+import style from './css/home.scss'
 
 //COMPONENTS
 import Berita from './Berita'

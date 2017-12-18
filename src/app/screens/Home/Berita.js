@@ -4,7 +4,7 @@ import _ from 'lodash'
 import axios from 'axios'
 
 //STYLE
-import style from './berita.scss'
+import style from './css/berita.scss'
 
 //COMPONENT
 export default class Berita extends Component {
@@ -63,14 +63,14 @@ export default class Berita extends Component {
             <div className={style['news-item']}>
               <span className={"material-icons " + style.icon}>keyboard_arrow_right</span>
               <div className={style['title-wrapper']}>
-                <a href="#" className={style.title}>Klik di sini untuk melihat daftar panduan</a>
+                <a href="http://selma.ub.ac.id/panduan-mahasiswa/" className={style.title}>Klik di sini untuk melihat daftar panduan</a>
               </div>
             </div>
           </div>
         </div>
 
         <div className={style.footer}>
-          <span>Copyright &copy; 2017 <a href="https://ngopi.men">Ngopi Men</a>. All Rights Reserved</span>
+          <span>Copyright &copy; 2017 <a href="https://ngopi.men">Ngopimen</a>. All Rights Reserved</span>
         </div>
       </div>
     );

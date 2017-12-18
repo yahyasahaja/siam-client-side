@@ -23,10 +23,14 @@ export default class SelectableCard extends Component {
     let arr = []
 
     for (let i = 1; i <= semester; i++) 
-      arr.push(<div key={i} className={style.tab} onClick={() => {
-        this.setState({selected: i})
-        if (this.props.onClick) this.props.onClick()
-      }}>
+      arr.push(<div 
+        key={i} 
+        className={`${style.tab} ${i == selected ? style['tab-active'] : ''}`} 
+        onClick={() => {
+          this.setState({selected: i})
+          if (this.props.onClick) this.props.onClick()
+        }
+      }>
         <span>{`${i == selected ? 'Semester ' : ''}${i}`}</span>
       </div>)
 

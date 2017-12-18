@@ -5,5 +5,30 @@
   justify-content: center;
   padding: 90px 20px 20px 132px;
   background: #ededed;
-  
+
+  .detail-button {
+    background: #2980b9;
+    color: white;
+    border-radius: 50px;
+    padding: 5px 20px;
+    box-shadow: 1px 3px 3px 0px #d5d5d5;
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+      background: #329ce2;
+      box-shadow: 1px 3px 3px 0px #adadad;
+      transition: .3s;
+    }
+
+    &:active {
+      background: #14405e;
+      transition: 0s;
+    }
+  }
+}
+
+.modals-wrapper {
+  max-height: 300px;
+  overflow-y: auto;
 }

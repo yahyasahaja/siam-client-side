@@ -1,13 +1,13 @@
 .container {
-  display: block;
+  display: flex;
   position: relative;
   margin: 15px;
+  flex-direction: column;
 
   .tab-wrapper {
     display: flex;
     height: 60px;
     margin-bottom: -6px;
-    margin-left: -3px;
     
     .tab {
       padding: 3px 18px;
@@ -15,9 +15,24 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0 3px;
-      background: white;
+      margin-right: 2px;
+      background: #2980b9;
       border-radius: 5px;
+      color: white;
+      box-shadow: 1px 3px 3px 0px #d5d5d5;
+
+      &:hover {
+        background: #319be2;
+      }
+    }
+
+    .tab-active {
+      background: white;
+      color: #5a5a5a;
+
+      &:hover {
+        background: white;
+      }
     }
   }
 

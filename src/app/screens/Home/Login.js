@@ -5,7 +5,7 @@ import Checkbox from 'react-toolbox/lib/checkbox'
 import {Button, IconButton} from 'react-toolbox/lib/button'
 
 //STYLE
-import style from './login.scss'
+import style from './css/login.scss'
 import theme from '../../css/theme-button-blue.scss'
 
 //COMPONENT

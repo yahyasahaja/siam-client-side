@@ -8,6 +8,7 @@ import style from './css/index.scss'
 //COMPONENTS
 import Home from './Home'
 import Schedule from './Schedule'
+import Settings from './Settings'
 import LeftMenu from '../../components/LeftMenu'
 import TopMenu from '../../components/TopMenu'
 import KHS from './KHS'
@@ -22,6 +23,7 @@ export default class Dashboard extends Component {
           <Route path="/dashboard/home" component={Home} />
           <Route path="/dashboard/schedule" component={Schedule} />
           <Route path="/dashboard/khs" component={KHS} />
+          <Route path="/dashboard/settings" component={Settings} />
         </Switch>
         <LeftMenu {...this.props} />
         <TopMenu />

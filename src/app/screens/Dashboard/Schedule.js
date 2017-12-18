@@ -28,7 +28,7 @@ export default class Shcedule extends Component {
 
   renderCards() {
     let { schedule } = this.state
-    console.log(schedule)
+    
     if (schedule) return _.map(schedule, (data, i) => {
       if (!data || i > 5) return 
       return (
