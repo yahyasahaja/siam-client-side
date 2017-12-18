@@ -46604,14 +46604,29 @@ var Settings = function (_Component) {
       profile: null,
       profileHeader: {},
       newPassword: null,
-      reNewPassword: null,
+      retypePassword: null,
+      retypeErr: null,
       password: null
     }, _this.handleChange = function (name, value) {
+      if (name === 'retypePassword') {
+        if (value !== _this.state.newPassword) {
+          return _this.setState(_defineProperty({ retypeErr: 'Password did not match!' }, name, value));
+        } else return _this.setState(_defineProperty({ retypeErr: null }, name, value));
+      } else if (name == 'newPassword') {
+        if (_this.state.retypePassword != null) {
+          if (value !== _this.state.retypePassword) {
+            return _this.setState(_defineProperty({ retypeErr: 'Password did not match!' }, name, value));
+          } else return _this.setState(_defineProperty({ retypeErr: null }, name, value));
+        }
+      }
       _this.setState(_defineProperty({}, name, value));
     }, _this.onSubmit = function (e) {
       e.preventDefault();
 
       console.log('submitted');
+      if (_this.state.retypePassword === _this.state.newPassword) {
+        //axios.post()
+      }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -46691,8 +46706,8 @@ var Settings = function (_Component) {
               name: 'newPassword',
               label: 'New Password', type: 'text' }, _defineProperty(_React$createElement, 'type', 'password'), _defineProperty(_React$createElement, 'value', this.state.newPassword), _defineProperty(_React$createElement, 'onChange', this.handleChange.bind(this, "newPassword")), _React$createElement)),
             _react2.default.createElement(_input2.default, (_React$createElement2 = {
-              name: 'newPassword',
-              label: 'Retype New Password', type: 'text' }, _defineProperty(_React$createElement2, 'type', 'password'), _defineProperty(_React$createElement2, 'value', this.state.reNewPassword), _defineProperty(_React$createElement2, 'onChange', this.handleChange.bind(this, "reNewPassword")), _React$createElement2)),
+              name: 'retypePassword', error: this.state.retypeErr,
+              label: 'Retype New Password', type: 'text' }, _defineProperty(_React$createElement2, 'type', 'password'), _defineProperty(_React$createElement2, 'value', this.state.retypePassword), _defineProperty(_React$createElement2, 'onChange', this.handleChange.bind(this, "retypePassword")), _React$createElement2)),
             _react2.default.createElement(_button.Button, { label: 'CHANGE', primary: true, raised: true, theme: _commonButton2.default, type: 'submit' })
           )
         )

@@ -30,11 +30,27 @@ export default class Settings extends Component {
     profile: null,
     profileHeader: {},
     newPassword: null,
-    reNewPassword: null,
+    retypePassword: null,
+    retypeErr: null,
     password: null,
   }
 
   handleChange = (name, value) => {
+    if(name==='retypePassword'){
+      if(value!==this.state.newPassword){
+        return this.setState({retypeErr: 'Password did not match!', [name]: value}) 
+      }
+      else
+        return this.setState({retypeErr: null, [name]: value})
+    } else if (name == 'newPassword') {
+      if (this.state.retypePassword != null) {
+        if(value!==this.state.retypePassword){
+          return this.setState({retypeErr: 'Password did not match!', [name]: value}) 
+        }
+        else
+          return this.setState({retypeErr: null, [name]: value})
+      }
+    }
     this.setState({[name]: value})
   }
 
@@ -42,6 +58,9 @@ export default class Settings extends Component {
     e.preventDefault()
 
     console.log('submitted')
+    if (this.state.retypePassword === this.state.newPassword) {
+      //axios.post()
+    }
   }
 
   render() {
@@ -69,9 +88,9 @@ export default class Settings extends Component {
               label="New Password" type="text" type="password" value={this.state.newPassword}
               onChange={this.handleChange.bind(this, "newPassword")} />
             <Input 
-              name="newPassword"
-              label="Retype New Password" type="text" type="password" value={this.state.reNewPassword}
-              onChange={this.handleChange.bind(this, "reNewPassword")} />  
+              name="retypePassword" error={this.state.retypeErr}
+              label="Retype New Password" type="text" type="password" value={this.state.retypePassword}
+              onChange={this.handleChange.bind(this, "retypePassword")} />  
 
             <Button label="CHANGE" primary raised theme={theme} type="submit" />
           </form>
