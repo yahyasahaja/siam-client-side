@@ -12,6 +12,7 @@ import theme2 from '../css/theme-button-red.scss'
 
 //COMPONENTS
 import FormWrapper from './FormWrapper'
+import Loading from '../components/Loading'
 
 //COMPONENT
 export default class Table extends Component {
@@ -175,6 +176,8 @@ export default class Table extends Component {
   }
 
   render() {
+    if (!this.props.data) return <Loading circular wrapped={false} width={300} height={300} />
+
     return (
       <div className={style['container']}>
         {this.renderSelectableOption()}

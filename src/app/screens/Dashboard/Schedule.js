@@ -8,6 +8,7 @@ import style from './css/schedule.scss'
 
 //COMPONENTS
 import ClosableCard from '../../components/ClosableCard'
+import Loading from '../../components/Loading'
 
 //INNER_CONFIG
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -55,6 +56,8 @@ export default class Shcedule extends Component {
   }
 
   render() {
+    if (!this.state.schedule) return <Loading circular wrapped={false} width={300} height={300} />
+
     return (
       <div className={style.container}>
         {this.renderCards()}    
