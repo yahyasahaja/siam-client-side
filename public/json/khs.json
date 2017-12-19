@@ -1,39 +1,82 @@
-
-[
-  {
-  "kode": "CIF61230",
-  "matkul": "Algoritma Struktur Data",
-  "sks": "3",
-  "nilai_huruf": "A"
-  },
-  {
-  "kode": "CIF61230",
-  "matkul": "Algoritma Struktur Data",
-  "sks": "3",
-  "nilai_huruf": "A"
-  },
-  {
-  "kode": "CIF61230",
-  "matkul": "Algoritma Struktur Data",
-  "sks": "3",
-  "nilai_huruf": "A"
-  },
-  {
-  "kode": "CIF61230",
-  "matkul": "Algoritma Struktur Data",
-  "sks": "3",
-  "nilai_huruf": "A"
-  },
-  {
-  "kode": "CIF61230",
-  "matkul": "Algoritma Struktur Data",
-  "sks": "3",
-  "nilai_huruf": "A"
-  },
-  {
-  "kode": "CIF61230",
-  "matkul": "Algoritma Struktur Data",
-  "sks": "3",
-  "nilai_huruf": "A"
-  }
-]
+{
+  "khs": [
+    {
+      "ID_sesikuliah": 20,
+      "kelas": "C",
+      "kode_matkul": "CS5501",
+      "matakuliah": "Sistem Digital",
+      "nilai": 77,
+      "nilai_huruf": "B+",
+      "prodi": "Teknik Komputer",
+      "ruangan": "2.3",
+      "semester": "genap",
+      "sks": 3,
+      "tahun": "2017"
+    },
+    {
+      "ID_sesikuliah": 22,
+      "kelas": "B",
+      "kode_matkul": "CS5502",
+      "matakuliah": "Arsitektur dan Org. Komp.",
+      "nilai": 79,
+      "nilai_huruf": "B+",
+      "prodi": "Teknik Komputer",
+      "ruangan": "1.5",
+      "semester": "genap",
+      "sks": 4,
+      "tahun": "2017"
+    },
+    {
+      "ID_sesikuliah": 23,
+      "kelas": "C",
+      "kode_matkul": "CS5502",
+      "matakuliah": "Arsitektur dan Org. Komp.",
+      "nilai": 74,
+      "nilai_huruf": "B",
+      "prodi": "Teknik Komputer",
+      "ruangan": "1.3",
+      "semester": "genap",
+      "sks": 4,
+      "tahun": "2017"
+    },
+    {
+      "ID_sesikuliah": 25,
+      "kelas": "E",
+      "kode_matkul": "CS5502",
+      "matakuliah": "Arsitektur dan Org. Komp.",
+      "nilai": 83,
+      "nilai_huruf": "A",
+      "prodi": "Teknik Komputer",
+      "ruangan": "1.3",
+      "semester": "genap",
+      "sks": 4,
+      "tahun": "2017"
+    },
+    {
+      "ID_sesikuliah": 27,
+      "kelas": "C",
+      "kode_matkul": "CS5503",
+      "matakuliah": "Sistem Operasi",
+      "nilai": 95,
+      "nilai_huruf": "A",
+      "prodi": "Teknik Komputer",
+      "ruangan": "1.5",
+      "semester": "genap",
+      "sks": 2,
+      "tahun": "2017"
+    },
+    {
+      "ID_sesikuliah": 29,
+      "kelas": "E",
+      "kode_matkul": "CS5503",
+      "matakuliah": "Sistem Operasi",
+      "nilai": 72,
+      "nilai_huruf": "B",
+      "prodi": "Teknik Komputer",
+      "ruangan": "1.2",
+      "semester": "genap",
+      "sks": 2,
+      "tahun": "2017"
+    }
+  ]
+}

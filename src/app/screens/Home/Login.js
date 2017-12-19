@@ -9,6 +9,10 @@ import axios from 'axios'
 import style from './css/login.scss'
 import theme from '../../css/theme-button-blue.scss'
 
+//SERVICES
+import store from '../../services/store'
+import * as actions from '../../services/actions'
+
 //COMPONENT
 export default class Login extends Component {
   state = {
@@ -29,7 +33,7 @@ export default class Login extends Component {
       username,
       password
     }).then(res => {
-      console.log(res.data)
+      store.dispatch(actions.login(res.data.token))
     })
   }
 

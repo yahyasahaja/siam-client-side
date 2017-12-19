@@ -35,11 +35,11 @@ export default class KHS extends Component {
     axios.get('/json/khs.json').then(res => {
       this.setState({schedule: {
         header: ['Kode', 'Mata Kuliah', 'SKS', 'Nilai', 'Detail'],
-        content: _.map(res.data, (data, i) => {
+        content: _.map(res.data.khs, (data, i) => {
           let rowData = []
           
-          rowData.push(data.kode)
-          rowData.push(data.matkul)
+          rowData.push(data.kode_matkul)
+          rowData.push(data.matakuliah)
           rowData.push(data.sks)
           rowData.push(data.nilai_huruf)
           rowData.push(<div 
@@ -49,7 +49,7 @@ export default class KHS extends Component {
 
               axios.get('/json/classmate.json').then(res => {
                 if (res.data.mahasiswa)
-                this.setState({title: `${data.matkul} Classmate`, classmate: {
+                this.setState({title: `${data.matakuliah} Classmate`, classmate: {
                   header: ['No', 'NIM', 'Nama'],
                   content: _.map(res.data.mahasiswa, (data, i) => {
                     return {data: [i + 1, data.nim, data.nama]}
