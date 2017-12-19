@@ -46107,6 +46107,10 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _axios = __webpack_require__(18);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 var _floatingMenu = __webpack_require__(394);
 
 var _floatingMenu2 = _interopRequireDefault(_floatingMenu);
@@ -46141,13 +46145,30 @@ var TopMenu = function (_Component) {
     }
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = TopMenu.__proto__ || Object.getPrototypeOf(TopMenu)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      openMenu: false
+      openMenu: false,
+      profileHeader: {}
     }, _this.toggleOpenMenu = function () {
       _this.setState({ openMenu: !_this.state.openMenu });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(TopMenu, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      _axios2.default.get('/json/mahasiswa.json').then(function (_ref2) {
+        var data = _ref2.data;
+
+        console.log(data);
+        if (data) _this2.setState({
+          profileHeader: {
+            nama: data.mahasiswa.nama
+          }
+        });
+      });
+    }
+  }, {
     key: 'renderFloatingMenu',
     value: function renderFloatingMenu() {
       if (this.state.openMenu) return;
@@ -46155,6 +46176,9 @@ var TopMenu = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      var profileHeader = this.state.profileHeader;
+
+
       return _react2.default.createElement(
         'div',
         { className: _floatingMenu2.default.container },
@@ -46179,7 +46203,7 @@ var TopMenu = function (_Component) {
           _react2.default.createElement(
             'span',
             { className: _floatingMenu2.default.name },
-            'Yahya Sahaja'
+            profileHeader.nama
           )
         )
       );
@@ -46934,13 +46958,13 @@ var Settings = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      _axios2.default.get('/json/profile.json').then(function (_ref2) {
+      _axios2.default.get('/json/mahasiswa.json').then(function (_ref2) {
         var data = _ref2.data;
 
         if (data) _this2.setState({
           profileHeader: {
-            nama: data.nama,
-            nim: data.nim
+            nama: data.mahasiswa.nama,
+            nim: data.mahasiswa.nim
           }
         });
       });

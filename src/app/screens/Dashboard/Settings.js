@@ -15,12 +15,12 @@ import Card from '../../components/Card'
 //COMPONENT
 export default class Settings extends Component {
   componentDidMount() {
-    axios.get('/json/profile.json').then(({ data }) => {
+    axios.get('/json/mahasiswa.json').then(({ data }) => {
       if (data)
         this.setState({
           profileHeader: {
-            nama: data.nama,
-            nim: data.nim,
+            nama: data.mahasiswa.nama,
+            nim: data.mahasiswa.nim,
           }
         })
     })

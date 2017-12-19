@@ -1,5 +1,6 @@
 //MODULES
 import React, { Component } from 'react'
+import axios from 'axios'
 
 //STYLE
 import style from './css/floating-menu.scss'
@@ -8,8 +9,21 @@ import style from './css/floating-menu.scss'
 
 //COMPONENT
 export default class TopMenu extends Component {
+  componentDidMount() {
+    axios.get('/json/mahasiswa.json').then(({ data }) => {
+      console.log(data)
+      if (data)
+        this.setState({
+          profileHeader: {
+            nama: data.mahasiswa.nama,
+          },
+        })
+    })
+  }
+
   state = {
     openMenu: false,
+    profileHeader: {},
   }
 
   renderFloatingMenu() {
@@ -21,6 +35,8 @@ export default class TopMenu extends Component {
   }
 
   render() {
+    let { profileHeader } = this.state
+
     return (
       <div className={style.container}>
         <div className={style.left}>
@@ -30,7 +46,7 @@ export default class TopMenu extends Component {
 
         <div className={style.right}>
           <span className="material-icons">account_circle</span>
-          <span className={style.name}>Yahya Sahaja</span>
+          <span className={style.name}>{profileHeader.nama}</span>
         </div>
       </div>
     );
